@@ -1,0 +1,20 @@
+services:
+  backend:
+    build:
+      context: ./backend
+    container_name: paper-polish-backend
+    env_file:
+      - ./backend/.env
+    restart: unless-stopped
+    expose:
+      - "8000"
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: paper-polish-frontend
+    depends_on:
+      - backend
+    restart: unless-stopped
+    ports:
+      - "80:80"

@@ -1,0 +1,30 @@
+# Secrets
+backend/.env
+.env
+
+# Python
+backend/.pytest_cache/
+backend/.venv/
+.venv/
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# IDE
+.idea/
+.vscode/
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Deployment archives
+paper-polish-agent-deploy.zip
+*.zip
