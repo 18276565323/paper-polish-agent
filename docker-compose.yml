@@ -1,10 +1,29 @@
 services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: paper-polish-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: paper_polish
+      POSTGRES_USER: paper_polish
+      POSTGRES_PASSWORD: paper_polish_password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U paper_polish -d paper_polish"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
   backend:
     build:
       context: ./backend
     container_name: paper-polish-backend
     env_file:
       - ./backend/.env
+    depends_on:
+      postgres:
+        condition: service_healthy
     restart: unless-stopped
     expose:
       - "8000"
@@ -18,3 +37,6 @@ services:
     restart: unless-stopped
     ports:
       - "80:80"
+
+volumes:
+  postgres_data:

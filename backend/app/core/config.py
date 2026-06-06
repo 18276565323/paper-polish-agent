@@ -10,6 +10,7 @@ class Settings(BaseSettings):
     modelgate_api_key: str = ""
     modelgate_base_url: str = "https://mg.aid.pub/v1"
     modelgate_model: str = ""
+    database_url: str = "sqlite:///./paper_polish_dev.db"
 
 
 @lru_cache

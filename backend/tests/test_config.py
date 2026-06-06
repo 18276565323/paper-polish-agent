@@ -8,3 +8,4 @@ def test_settings_use_safe_modelgate_defaults() -> None:
     assert settings.modelgate_base_url == "https://mg.aid.pub/v1"
     assert settings.modelgate_api_key == ""
     assert settings.modelgate_model == ""
+    assert settings.database_url == "sqlite:///./paper_polish_dev.db"
