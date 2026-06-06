@@ -337,14 +337,16 @@ h3 {
 }
 
 .feature-grid,
-.score-grid {
+.score-grid,
+.metric-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 12px;
 }
 
 .feature,
-.score-grid div {
+.score-grid div,
+.metric {
   border: 1px solid var(--border);
   border-radius: 8px;
   padding: 18px;
@@ -389,8 +391,24 @@ h3 {
   font-size: 32px;
 }
 
-.score-grid span {
+.score-grid span,
+.metric span {
   color: var(--muted);
+}
+
+.metric {
+  display: grid;
+  gap: 6px;
+}
+
+.metric strong {
+  color: var(--accent-dark);
+  font-size: 34px;
+  line-height: 1;
+}
+
+.section-actions {
+  margin-top: 18px;
 }
 
 .table-wrap {
@@ -432,6 +450,84 @@ tr:last-child td {
 td:first-child {
   width: 190px;
   font-weight: 800;
+}
+
+.evaluation-hero {
+  margin-top: 36px;
+}
+
+.evaluation-hero h1 {
+  margin: 8px 0 14px;
+  font-size: clamp(34px, 5vw, 58px);
+}
+
+.filters {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+.filters button {
+  min-height: 34px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0 12px;
+  color: var(--muted);
+  background: var(--surface);
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.filters button.active,
+.filters button:hover {
+  color: var(--accent-dark);
+  background: var(--accent-soft);
+}
+
+.evaluation-table-wrap {
+  max-height: 680px;
+}
+
+.evaluation-table {
+  min-width: 1180px;
+}
+
+.evaluation-table th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.evaluation-table td:nth-child(3),
+.evaluation-table td:nth-child(4),
+.evaluation-table td:nth-child(6) {
+  min-width: 240px;
+}
+
+.score-pill {
+  min-width: 52px;
+  display: inline-flex;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 4px 9px;
+  font-weight: 900;
+}
+
+.score-pill.high {
+  color: var(--accent-dark);
+  background: var(--accent-soft);
+}
+
+.score-pill.medium {
+  color: #805a00;
+  background: #fff4d6;
+}
+
+.score-pill.low {
+  color: #9f1d14;
+  background: #ffe5e0;
 }
 
 .note {
@@ -511,7 +607,8 @@ td:first-child {
   .cards.three,
   .cards.five,
   .feature-grid,
-  .score-grid {
+  .score-grid,
+  .metric-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
@@ -543,6 +640,7 @@ td:first-child {
   .cards.five,
   .feature-grid,
   .score-grid,
+  .metric-grid,
   .shot-grid {
     grid-template-columns: 1fr;
   }

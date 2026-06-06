@@ -6,7 +6,7 @@
     <title>AI 产品经理作品集 | 论文润色 Agent</title>
     <meta
       name="description"
-      content="AI 产品经理作品集，展示论文润色 Agent 的已实现 Demo、测试集设计、产品化方案、模型选择和竞品分析。"
+      content="AI 产品经理作品集，展示论文润色 Agent 的已实现 Demo、测试集评估、产品化方案、模型选择和竞品分析。"
     />
     <link rel="stylesheet" href="./styles.css" />
   </head>
@@ -16,7 +16,7 @@
       <nav class="nav" aria-label="作品集导航">
         <a href="#implemented">已实现</a>
         <a href="#product">产品设计</a>
-        <a href="#evaluation">测试集</a>
+        <a href="#evaluation">评估结果</a>
         <a href="#ai-engineering">AI 设计</a>
         <a href="#competition">竞品分析</a>
         <a href="#interview">面试讲法</a>
@@ -29,11 +29,11 @@
           <p class="eyebrow">AI 产品经理作品集</p>
           <h1>论文润色 Agent：从可运行 Demo 到产品化评估</h1>
           <p class="lead">
-            这是一个面向学术写作场景的 AI 产品案例。当前已完成前端页面、FastAPI 后端、模型接入、结构化输出、PostgreSQL 匿名历史记录和云端部署，并补充了 15 条小规模 AI 效果评估测试集。
+            一个面向学术写作场景的 AI 产品案例。当前已完成前端页面、FastAPI 后端、模型接入、结构化输出、PostgreSQL 匿名历史记录和云端部署，并基于 15 条测试用例完成初步人工评分。
           </p>
           <div class="hero-actions">
             <a class="primary-link" href="#implemented">看已实现能力</a>
-            <a class="secondary-link" href="#evaluation">看测试集设计</a>
+            <a class="secondary-link" href="./evaluation.html">查看完整评估表</a>
           </div>
         </div>
         <div class="product-shot" aria-label="论文润色 Agent 界面示意">
@@ -73,7 +73,7 @@
         <div class="section-heading">
           <p class="eyebrow">IMPLEMENTED</p>
           <h2>当前已经实际完成的部分</h2>
-          <p>这部分是已经落地的能力，面试时可以明确说“这些是我实际做出来并部署过的”。</p>
+          <p>这些能力已经实际落地，面试时可以明确说“这是我做出来并部署过的”。</p>
         </div>
         <div class="feature-grid">
           <div class="feature"><span class="status-tag done">已实现</span>Vue 3 前端交互页面</div>
@@ -132,63 +132,31 @@
           <p class="eyebrow">EVALUATION</p>
           <h2>小规模测试集与效果评估</h2>
           <p>
-            我已经整理了 15 条测试用例，覆盖正常输入、边界输入和风险输入。当前阶段先采用人工评分，后续再扩展为自动化评估和多模型对比。
+            我使用 15 条测试用例进行人工评分，覆盖口语化表达、学术表达不足、长句逻辑、术语密集、事实敏感、边界输入和 Prompt 注入等场景。
           </p>
+        </div>
+        <div class="metric-grid">
+          <div class="metric"><strong>15</strong><span>测试用例</span></div>
+          <div class="metric"><strong>7</strong><span>覆盖场景</span></div>
+          <div class="metric"><strong>4.43</strong><span>平均分 / 5</span></div>
+          <div class="metric"><strong>100%</strong><span>结构完整率</span></div>
         </div>
         <div class="cards three">
           <article class="card">
-            <h3>典型文本 10 条</h3>
-            <p>覆盖口语化表达、学术表达不足、长句逻辑混乱、术语密集文本和事实敏感文本。</p>
+            <h3>表现较好</h3>
+            <p>术语保持、数值保持、长句逻辑优化和 Prompt 注入防护表现较稳。</p>
           </article>
           <article class="card">
-            <h3>边界输入 2 条</h3>
-            <p>覆盖超短输入和空输入，验证产品是否能提示用户补充内容，而不是编造结果。</p>
+            <h3>主要问题</h3>
+            <p>短文本输入容易过度补全，价值判断类表达有轻微拔高。</p>
           </article>
           <article class="card">
-            <h3>风险输入 3 条</h3>
-            <p>覆盖数值事实、专业术语和 Prompt 注入，验证模型是否会改动事实或执行恶意指令。</p>
+            <h3>下一步优化</h3>
+            <p>增加最小输入长度提示，并在 Prompt 中约束“不拔高、不新增结论”。</p>
           </article>
         </div>
-        <div class="table-wrap compact-table">
-          <table>
-            <thead>
-              <tr>
-                <th>评分维度</th>
-                <th>权重</th>
-                <th>说明</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>语义保持</td>
-                <td>30%</td>
-                <td>是否保留原文核心含义，没有改歪事实。</td>
-              </tr>
-              <tr>
-                <td>学术表达</td>
-                <td>30%</td>
-                <td>是否更符合论文表达，减少口语化。</td>
-              </tr>
-              <tr>
-                <td>可读性</td>
-                <td>20%</td>
-                <td>是否更清晰、连贯、易理解。</td>
-              </tr>
-              <tr>
-                <td>结构完整</td>
-                <td>10%</td>
-                <td>是否返回完整结构化字段。</td>
-              </tr>
-              <tr>
-                <td>风险控制</td>
-                <td>10%</td>
-                <td>是否避免改数值、编造事实、执行注入指令。</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="note">
-          测试集文件已整理为 CSV，可用于逐条运行和人工打分。当前不写虚假的平均分，等实际跑完后再展示“通过率、平均分、典型失败案例和 Prompt 优化建议”。
+        <div class="hero-actions section-actions">
+          <a class="primary-link" href="./evaluation.html">查看完整评估表</a>
         </div>
       </section>
 
@@ -228,58 +196,13 @@
               <tr>
                 <td>事实约束</td>
                 <td><span class="status-tag planned">待加强</span></td>
-                <td>后续结合测试集中事实敏感用例，强化“不新增事实、不改变结论”的校验。</td>
+                <td>结合事实敏感测试用例，强化“不新增事实、不改变结论”的校验。</td>
               </tr>
             </tbody>
           </table>
         </div>
         <div class="note">
-          第一阶段选择 OpenAI 兼容模型，是因为它在中文理解、指令遵循和结构化输出上更适合作为 Demo 验证模型。后续会用同一套测试集对比 Qwen、DeepSeek、Claude 等模型，但这部分属于下一阶段验证，不是已经完成的实验结论。
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="section-heading">
-          <p class="eyebrow">FALLBACK</p>
-          <h2>兜底策略：已实现一部分，后续继续补齐</h2>
-        </div>
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th>异常情况</th>
-                <th>状态</th>
-                <th>说明</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>模型调用失败</td>
-                <td><span class="status-tag done">已实现</span></td>
-                <td>后端会记录 failed 状态，前端展示错误提示。</td>
-              </tr>
-              <tr>
-                <td>数据库记录任务</td>
-                <td><span class="status-tag done">已实现</span></td>
-                <td>成功和失败任务都会进入 PostgreSQL，便于后续分析失败率。</td>
-              </tr>
-              <tr>
-                <td>JSON 格式错误修复</td>
-                <td><span class="status-tag planned">待实现</span></td>
-                <td>后续可增加一次结构修复重试，仍失败则返回可读错误。</td>
-              </tr>
-              <tr>
-                <td>输入过长处理</td>
-                <td><span class="status-tag planned">待实现</span></td>
-                <td>后续可做分段处理或提示用户拆分提交，避免上下文截断。</td>
-              </tr>
-              <tr>
-                <td>润色质量过低</td>
-                <td><span class="status-tag planned">待实现</span></td>
-                <td>后续可增加质量评分、重新生成或切换模型。</td>
-              </tr>
-            </tbody>
-          </table>
+          第一阶段选择 OpenAI 兼容模型，是因为它在中文理解、指令遵循和结构化输出上更适合作为 Demo 验证模型。后续会用同一套测试集对比 Qwen、DeepSeek、Claude 等模型。
         </div>
       </section>
 
@@ -287,9 +210,7 @@
         <div class="section-heading">
           <p class="eyebrow">COMPETITION</p>
           <h2>竞品分析与定位</h2>
-          <p>
-            这部分是基于同类产品功能观察提炼的产品定位，不包装成完整商业竞品报告。
-          </p>
+          <p>这部分是基于同类产品功能观察提炼的产品定位，不包装成完整商业竞品报告。</p>
         </div>
         <div class="cards five">
           <article class="card">
@@ -318,32 +239,11 @@
         </div>
       </section>
 
-      <section id="roadmap" class="section split">
-        <div>
-          <p class="eyebrow">ROADMAP</p>
-          <h2>产品路线图</h2>
-        </div>
-        <div class="timeline">
-          <div>
-            <strong>阶段一：已完成 Demo 验证</strong>
-            <p>匿名使用、段落润色、结构化结果、任务历史、云端部署、15 条测试集整理。</p>
-          </div>
-          <div>
-            <strong>阶段二：下一步体验优化</strong>
-            <p>跑完测试集并填写评分，补充失败案例，优化 Prompt，增加输入长度提示。</p>
-          </div>
-          <div>
-            <strong>阶段三：后续产品化验证</strong>
-            <p>多模型对比、自动化评估、用户登录、免费额度、团队版和学科模板。</p>
-          </div>
-        </div>
-      </section>
-
       <section id="interview" class="section closing">
         <p class="eyebrow">INTERVIEW SUMMARY</p>
-        <h2>面试时应该怎么诚实表达</h2>
+        <h2>面试时怎么诚实表达</h2>
         <p>
-          这个项目我已经完成了一个可运行的 AI 润色 Demo，包括前端页面、后端接口、模型调用、PostgreSQL 历史记录和 Docker 部署。为了避免只凭主观感觉判断效果，我补充整理了 15 条小规模测试集，覆盖典型、边界和风险场景。测试集评分还需要继续跑完，因此我会把当前阶段表述为“已设计测试集并准备评估”，而不是夸大成已经完成大规模模型评测。
+          这个项目我已经完成了一个可运行的 AI 润色 Demo，包括前端页面、后端接口、模型调用、PostgreSQL 历史记录和 Docker 部署。为了避免只凭主观感觉判断效果，我补充了 15 条小规模测试集，并按语义保持、学术表达、可读性、结构完整和风险控制五个维度进行人工评分。评估结果暴露出短文本过度补全和价值判断拔高的问题，下一步会据此优化 Prompt 和输入校验。
         </p>
       </section>
     </main>
