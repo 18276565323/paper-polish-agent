@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI 产品经理作品集 | 论文润色 Agent</title>
+    <meta
+      name="description"
+      content="AI 产品经理作品集，展示论文润色 Agent 的产品设计、模型选择、测试集、兜底策略、竞品分析与落地路径。"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#hero">AI PM Portfolio</a>
+      <nav class="nav" aria-label="作品集导航">
+        <a href="#product">产品设计</a>
+        <a href="#ai-engineering">AI 工程化</a>
+        <a href="#evaluation">评估方案</a>
+        <a href="#competition">竞品分析</a>
+        <a href="#roadmap">路线图</a>
+      </nav>
+    </header>
+
+    <main>
+      <section id="hero" class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">AI 产品经理作品集</p>
+          <h1>论文润色 Agent 产品设计与落地</h1>
+          <p class="lead">
+            一个面向学术写作场景的 AI 工具案例，覆盖用户需求、Prompt 设计、模型选择、测试集评估、兜底策略、竞品分析与云端 Demo 落地。
+          </p>
+          <div class="hero-actions">
+            <a class="primary-link" href="#demo">查看 Demo 展示</a>
+            <a class="secondary-link" href="#interview">面试讲法</a>
+          </div>
+        </div>
+        <div class="product-shot" aria-label="论文润色 Agent 界面示意">
+          <div class="shot-header">
+            <span></span>
+            <strong>论文润色 Agent</strong>
+          </div>
+          <div class="shot-grid">
+            <div class="shot-panel">
+              <small>INPUT</small>
+              <p>“该方法可以提高系统性能”</p>
+            </div>
+            <div class="shot-panel result">
+              <small>RESULT</small>
+              <p>能够提升系统性能的方法。</p>
+            </div>
+          </div>
+          <div class="shot-bottom">
+            <span>修改明细</span>
+            <span>AI 知识点</span>
+            <span>匿名历史记录</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section intro">
+        <div>
+          <p class="eyebrow">POSITIONING</p>
+          <h2>个人定位</h2>
+        </div>
+        <p>
+          我希望成为能理解业务、懂 AI 链路、能推动产品落地的 AI 产品经理。过往经历中，我参与过保险业务 RAG 智能问答系统的测试与效果评估，也独立完成了论文润色 Agent 的前后端 Demo、模型接入、数据库记录和 Docker 部署。
+        </p>
+      </section>
+
+      <section id="product" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">PRODUCT</p>
+          <h2>产品背景与用户痛点</h2>
+          <p>
+            论文写作用户并不是单纯想让 AI “改得更好看”，而是希望获得更正式的表达、理解修改原因，并能追踪多次修改结果。
+          </p>
+        </div>
+        <div class="cards three">
+          <article class="card">
+            <h3>表达不够学术</h3>
+            <p>原文常出现口语化、主观化或表达冗余的问题，需要转换为更客观、凝练的论文表达。</p>
+          </article>
+          <article class="card">
+            <h3>修改不可解释</h3>
+            <p>通用聊天工具通常只给结果，用户不知道 AI 改了哪里，也难以判断是否保留了原意。</p>
+          </article>
+          <article class="card">
+            <h3>结果难复盘</h3>
+            <p>多次润色后结果散落在对话中，缺少任务记录、版本对比和后续质量评估基础。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section split">
+        <div>
+          <p class="eyebrow">WORKFLOW</p>
+          <h2>核心产品流程</h2>
+          <p>
+            第一阶段优先验证核心闭环：输入文本、选择润色需求、生成结构化结果、保存匿名历史记录。这个选择降低了使用门槛，也为后续登录、质量评估和数据闭环打基础。
+          </p>
+        </div>
+        <ol class="flow">
+          <li>用户输入论文段落</li>
+          <li>选择学术化润色、逻辑优化等需求</li>
+          <li>后端创建 running 任务记录</li>
+          <li>调用大模型返回结构化结果</li>
+          <li>保存 success / failed 状态与结果</li>
+          <li>前端展示历史记录，可点击恢复结果</li>
+        </ol>
+      </section>
+
+      <section id="demo" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">DEMO</p>
+          <h2>当前 Demo 已实现能力</h2>
+        </div>
+        <div class="feature-grid">
+          <div class="feature">Vue 3 前端交互页面</div>
+          <div class="feature">FastAPI 润色接口</div>
+          <div class="feature">ModelGate / OpenAI 兼容接入</div>
+          <div class="feature">结构化 Prompt 输出</div>
+          <div class="feature">PostgreSQL 匿名任务记录</div>
+          <div class="feature">Docker Compose 云端部署</div>
+        </div>
+      </section>
+
+      <section id="ai-engineering" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">AI ENGINEERING</p>
+          <h2>Prompt 设计与模型选择</h2>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>设计点</th>
+                <th>产品考虑</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>角色约束</td>
+                <td>让模型扮演学术论文润色助手，输出更贴近论文语境。</td>
+              </tr>
+              <tr>
+                <td>任务约束</td>
+                <td>不只润色，还要解释修改原因、指出剩余问题和学习建议。</td>
+              </tr>
+              <tr>
+                <td>结构约束</td>
+                <td>要求固定 JSON 字段，方便前端展示、数据库记录和质量评估。</td>
+              </tr>
+              <tr>
+                <td>事实约束</td>
+                <td>强调不新增事实、不改变论文结论，降低 AI 事实改写风险。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="note">
+          第一阶段选择 OpenAI 兼容模型，主要看重中文理解、指令遵循、结构化输出和稳定性。系统通过 ModelGate 接入，后续可以对比 Qwen、DeepSeek、Claude 等模型，避免与单一模型强绑定。
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-heading">
+          <p class="eyebrow">MODEL SELECTION</p>
+          <h2>模型对比方案</h2>
+          <p>模型不是只看“回答好不好看”，而要拆成可评估指标。</p>
+        </div>
+        <div class="score-grid">
+          <div><strong>40%</strong><span>润色质量</span></div>
+          <div><strong>25%</strong><span>语义保持</span></div>
+          <div><strong>15%</strong><span>结构化输出</span></div>
+          <div><strong>10%</strong><span>响应速度</span></div>
+          <div><strong>10%</strong><span>调用成本</span></div>
+        </div>
+      </section>
+
+      <section id="evaluation" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">EVALUATION</p>
+          <h2>测试集与效果评估</h2>
+          <p>我会用 50 条左右的小测试集覆盖典型输入、边界输入和风险输入。</p>
+        </div>
+        <div class="cards three">
+          <article class="card">
+            <h3>典型文本</h3>
+            <p>口语化表达、学术表达不足、长句逻辑混乱、术语密集文本。</p>
+          </article>
+          <article class="card">
+            <h3>边界输入</h3>
+            <p>空输入、超短输入、超长输入、格式混乱、包含表格或编号的文本。</p>
+          </article>
+          <article class="card">
+            <h3>风险输入</h3>
+            <p>包含事实数据、实验结论、Prompt 注入、敏感内容和可能违规请求。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-heading">
+          <p class="eyebrow">FALLBACK</p>
+          <h2>兜底策略与异常处理</h2>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>异常情况</th>
+                <th>兜底方案</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>模型超时</td>
+                <td>前端提示重试，后端记录 failed 状态，便于后续分析失败率。</td>
+              </tr>
+              <tr>
+                <td>JSON 格式错误</td>
+                <td>自动进行一次结构修复重试，仍失败则返回可读错误。</td>
+              </tr>
+              <tr>
+                <td>润色结果过短</td>
+                <td>提示结果可能不完整，允许重新生成或换模型。</td>
+              </tr>
+              <tr>
+                <td>输入过长</td>
+                <td>分段处理或提示用户拆分提交，避免上下文截断。</td>
+              </tr>
+              <tr>
+                <td>数据库写入失败</td>
+                <td>优先返回润色结果，同时提示历史保存失败。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="competition" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">COMPETITION</p>
+          <h2>竞品分析与定位</h2>
+        </div>
+        <div class="cards five">
+          <article class="card">
+            <h3>Paperpal</h3>
+            <p>偏学术写作，适合借鉴投稿导向和论文场景专业化能力。</p>
+          </article>
+          <article class="card">
+            <h3>Grammarly</h3>
+            <p>强在跨平台写作辅助，说明写作工具要融入用户工作流。</p>
+          </article>
+          <article class="card">
+            <h3>秘塔写作猫</h3>
+            <p>中文写作辅助能力完整，说明本土化表达和中文场景很重要。</p>
+          </article>
+          <article class="card">
+            <h3>QuillBot</h3>
+            <p>强在改写和 paraphrase，启发多种风格和改写强度设计。</p>
+          </article>
+          <article class="card">
+            <h3>ChatGPT</h3>
+            <p>自由度高，但专用产品要靠结构化流程和稳定体验形成差异。</p>
+          </article>
+        </div>
+        <div class="note">
+          我的差异化定位：聚焦中文论文段落润色，强调可解释润色、历史追踪和学习反馈，而不是做大而全的写作助手。
+        </div>
+      </section>
+
+      <section id="roadmap" class="section split">
+        <div>
+          <p class="eyebrow">ROADMAP</p>
+          <h2>产品路线图</h2>
+        </div>
+        <div class="timeline">
+          <div>
+            <strong>阶段一：验证核心需求</strong>
+            <p>匿名使用、段落润色、结构化结果、任务历史、云端部署。</p>
+          </div>
+          <div>
+            <strong>阶段二：提升留存</strong>
+            <p>用户登录、历史版本、导出 Word、收藏表达、Prompt 版本管理。</p>
+          </div>
+          <div>
+            <strong>阶段三：商业化</strong>
+            <p>免费额度、会员制、高校团队版、多模型对比、学科模板。</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="interview" class="section closing">
+        <p class="eyebrow">INTERVIEW SUMMARY</p>
+        <h2>面试总结表达</h2>
+        <p>
+          这个项目让我完整经历了一个 AI 产品从想法到 Demo 落地的过程。我不仅关注模型能否生成结果，也关注输入方式、Prompt 结构、输出展示、异常兜底、任务记录和后续数据闭环。我理解 AI 产品经理的价值不是简单接入模型，而是把模型能力嵌入真实场景，设计稳定、可解释、可评估、可持续迭代的产品体验。
+        </p>
+      </section>
+    </main>
+
+    <button class="back-top" type="button" aria-label="返回顶部">↑</button>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
