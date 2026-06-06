@@ -38,6 +38,28 @@ export async function polishPaper(payload) {
   return response.json()
 }
 
+export async function listTasks(limit = 20) {
+  const response = await fetch(`${API_BASE}/api/tasks?limit=${limit}`)
+
+  if (!response.ok) {
+    const message = await readErrorMessage(response)
+    throw new Error(message)
+  }
+
+  return response.json()
+}
+
+export async function getTaskDetail(taskId) {
+  const response = await fetch(`${API_BASE}/api/tasks/${taskId}`)
+
+  if (!response.ok) {
+    const message = await readErrorMessage(response)
+    throw new Error(message)
+  }
+
+  return response.json()
+}
+
 export async function checkHealth() {
   try {
     const response = await fetch(`${API_BASE}/health`)

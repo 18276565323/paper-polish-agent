@@ -288,12 +288,26 @@ select {
   }
 }
 
-.detail-band {
+.lower-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 420px);
+  gap: 16px;
+  align-items: stretch;
+  margin-top: 16px;
+}
+
+.detail-band,
+.history-panel {
   margin-top: 16px;
   border: 1px solid var(--border);
   border-radius: 8px;
   background: var(--surface);
   box-shadow: var(--shadow);
+}
+
+.lower-grid .detail-band,
+.lower-grid .history-panel {
+  margin-top: 0;
 }
 
 .tabs {
@@ -325,6 +339,113 @@ select {
   padding: 18px;
 }
 
+.history-panel {
+  padding: 18px;
+}
+
+.history-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.ghost-action {
+  min-height: 34px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0 12px;
+  color: var(--accent-dark);
+  background: var(--surface);
+  font-weight: 700;
+}
+
+.ghost-action:hover:not(:disabled) {
+  background: var(--accent-soft);
+}
+
+.history-empty {
+  min-height: 132px;
+  display: grid;
+  place-items: center;
+  border: 1px dashed var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  color: var(--muted);
+  text-align: center;
+  line-height: 1.6;
+}
+
+.history-list {
+  display: grid;
+  gap: 8px;
+  max-height: 260px;
+  overflow: auto;
+  padding-right: 2px;
+}
+
+.history-item {
+  width: 100%;
+  display: grid;
+  gap: 7px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px;
+  color: var(--text);
+  background: var(--surface-strong);
+  text-align: left;
+}
+
+.history-item:hover,
+.history-item.active {
+  border-color: var(--accent);
+  background: #f7fbfa;
+}
+
+.history-title,
+.history-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.history-title {
+  font-weight: 750;
+}
+
+.history-id {
+  color: var(--accent-dark);
+}
+
+.history-meta {
+  flex-wrap: wrap;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.history-status {
+  min-height: 22px;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 0 8px;
+  background: var(--accent-soft);
+  color: var(--accent-dark);
+  font-weight: 700;
+}
+
+.history-item.failed .history-status {
+  background: var(--warn-bg);
+  color: var(--warn);
+}
+
+.history-item.running .history-status {
+  background: #fff7df;
+  color: #8a5a00;
+}
+
 .error-banner {
   margin-bottom: 16px;
   border: 1px solid #ffd1cc;
@@ -350,6 +471,10 @@ select {
   }
 
   .workspace {
+    grid-template-columns: 1fr;
+  }
+
+  .lower-grid {
     grid-template-columns: 1fr;
   }
 
