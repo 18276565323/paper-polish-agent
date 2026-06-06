@@ -352,6 +352,32 @@ h3 {
   font-weight: 800;
 }
 
+.feature {
+  display: grid;
+  gap: 10px;
+}
+
+.status-tag {
+  width: fit-content;
+  min-height: 24px;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 0 9px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.status-tag.done {
+  color: var(--accent-dark);
+  background: var(--accent-soft);
+}
+
+.status-tag.planned {
+  color: #805a00;
+  background: #fff4d6;
+}
+
 .score-grid div {
   display: grid;
   gap: 6px;
@@ -368,9 +394,14 @@ h3 {
 }
 
 .table-wrap {
+  margin-top: 16px;
   overflow-x: auto;
   border: 1px solid var(--border);
   border-radius: 8px;
+}
+
+.compact-table {
+  margin-top: 20px;
 }
 
 table {
