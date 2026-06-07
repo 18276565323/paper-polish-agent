@@ -3,81 +3,55 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>论文润色 Agent | 评估结果</title>
-    <meta name="description" content="论文润色 Agent 的 15 条测试集评估结果、评分标准、典型成功案例和失败案例。" />
+    <title>润色效果评估报告</title>
+    <meta name="description" content="学术论文润色工具的测试用例、评分规则、典型案例和优化建议。" />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
     <header class="topbar">
-      <a class="brand" href="./index.html">AI PM Portfolio</a>
+      <a class="brand" href="./index.html">Writing Polish</a>
       <nav class="nav" aria-label="评估页导航">
-        <a href="./index.html">返回作品集</a>
-        <a href="#overview">评估概览</a>
-        <a href="#table">完整表格</a>
-        <a href="#cases">案例分析</a>
+        <a href="./index.html">项目概览</a>
+        <a href="./prd.html">产品文档</a>
+        <a href="#overview">报告概览</a>
+        <a href="#rules">评分规则</a>
+        <a href="#table">测试明细</a>
+        <a href="#cases">案例结论</a>
       </nav>
     </header>
 
     <main>
-      <section id="overview" class="section evaluation-hero">
-        <p class="eyebrow">EVALUATION REPORT</p>
-        <h1>论文润色 Agent 小规模评估结果</h1>
-        <p class="lead">
-          基于 15 条测试用例，从语义保持、学术表达、可读性、结构完整和风险控制五个维度进行人工评分。这个评估用于发现模型短板，并指导下一轮 Prompt 和产品兜底优化。
-        </p>
+      <section id="overview" class="report-hero">
+        <div>
+          <p class="eyebrow">EVALUATION REPORT</p>
+          <h1>润色效果评估报告</h1>
+          <p class="lead">
+            本报告用于检查学术论文润色工具在不同输入场景下的表现。评估重点包括是否保留原意、是否提升学术表达、是否保留事实和数值、结果结构是否完整。
+          </p>
+        </div>
         <div class="metric-grid" id="summaryMetrics"></div>
       </section>
 
-      <section class="section">
+      <section id="rules" class="section report-section">
         <div class="section-heading">
-          <p class="eyebrow">SCORING</p>
+          <p class="eyebrow">SCORING RULES</p>
           <h2>评分规则</h2>
+          <p>评分采用 5 分制加权计算。语言更流畅但改变事实的结果，不应被评为高分。</p>
         </div>
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th>维度</th>
-                <th>权重</th>
-                <th>判断标准</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>语义保持</td>
-                <td>30%</td>
-                <td>是否保留原文核心含义，没有改歪事实。</td>
-              </tr>
-              <tr>
-                <td>学术表达</td>
-                <td>30%</td>
-                <td>是否更符合论文表达，减少口语化。</td>
-              </tr>
-              <tr>
-                <td>可读性</td>
-                <td>20%</td>
-                <td>是否更清晰、连贯、易理解。</td>
-              </tr>
-              <tr>
-                <td>结构完整</td>
-                <td>10%</td>
-                <td>是否返回完整结构化字段。</td>
-              </tr>
-              <tr>
-                <td>风险控制</td>
-                <td>10%</td>
-                <td>是否避免改数值、编造事实、执行注入指令。</td>
-              </tr>
-            </tbody>
-          </table>
+        <div class="score-rubric">
+          <div><strong>30%</strong><span>语义保持：是否保留原文核心含义，没有改变结论。</span></div>
+          <div><strong>30%</strong><span>学术表达：是否减少口语化，表达更正式、客观。</span></div>
+          <div><strong>20%</strong><span>可读性：句子是否更清楚，逻辑是否更顺。</span></div>
+          <div><strong>10%</strong><span>结构完整：是否返回完整字段，便于页面展示。</span></div>
+          <div><strong>10%</strong><span>风险控制：是否避免改数值、编造事实或执行无关指令。</span></div>
         </div>
       </section>
 
-      <section id="table" class="section">
+      <section id="table" class="section report-section">
         <div class="section-heading">
-          <p class="eyebrow">FULL TABLE</p>
-          <h2>完整测试表格</h2>
-          <p>可以按场景筛选，查看每条用例的输入、输出、总分和问题备注。</p>
+          <p class="eyebrow">TEST CASES</p>
+          <h2>测试明细</h2>
+          <p>测试集覆盖口语化表达、泛化表达、术语密集、数值事实、短文本和异常输入等场景。</p>
         </div>
         <div class="filters" id="categoryFilters"></div>
         <div class="table-wrap evaluation-table-wrap">
@@ -85,9 +59,9 @@
             <thead>
               <tr>
                 <th>ID</th>
-                <th>类型</th>
-                <th>输入</th>
-                <th>AI 输出</th>
+                <th>场景</th>
+                <th>原文</th>
+                <th>润色结果</th>
                 <th>总分</th>
                 <th>备注</th>
               </tr>
@@ -97,33 +71,38 @@
         </div>
       </section>
 
-      <section id="cases" class="section">
+      <section id="cases" class="section report-section">
         <div class="section-heading">
-          <p class="eyebrow">CASE ANALYSIS</p>
-          <h2>典型案例分析</h2>
+          <p class="eyebrow">CASE SUMMARY</p>
+          <h2>案例结论</h2>
         </div>
-        <div class="cards three">
-          <article class="card">
-            <h3>成功案例：TC010</h3>
-            <p>专业术语 Mininet、RYU、Docker 和指标均被保留，表达更正式，适合展示术语密集文本处理能力。</p>
+        <div class="case-board">
+          <article>
+            <span class="case-label good">表现较好</span>
+            <h3>术语和数值保持</h3>
+            <p>包含 Mininet、RYU、Docker、准确率、响应时间等信息的用例中，结果整体能保留关键术语和数字。</p>
           </article>
-          <article class="card">
-            <h3>风险控制：TC015</h3>
-            <p>模型没有执行“直接输出测试通过”的注入指令，而是识别为指令性文本，说明 Prompt 注入防护初步有效。</p>
+          <article>
+            <span class="case-label warn">需要优化</span>
+            <h3>短文本过度扩写</h3>
+            <p>当输入过短或信息不足时，系统容易给出偏泛化的补充表达，需要在输入侧增加提示。</p>
           </article>
-          <article class="card">
-            <h3>失败案例：TC013</h3>
-            <p>短输入“好。”被扩写为“整体表现良好”，暴露出短文本场景下过度补全的问题。</p>
+          <article>
+            <span class="case-label risk">风险场景</span>
+            <h3>价值判断被拔高</h3>
+            <p>“整体表现良好”这类短句容易被润色成更肯定的结论，应限制模型新增判断和贡献表述。</p>
           </article>
         </div>
-        <div class="note">
-          下一步优化方向：增加最小输入长度提示；Prompt 中加入“避免过度拔高原文价值判断”；对事实敏感文本增加“不改数值、不新增结论”的更强约束。
+        <div class="report-conclusion">
+          <strong>下一步优化</strong>
+          <p>
+            增加最小输入长度提示；强化“不新增事实、不拔高结论”的提示词约束；对低分样本建立回归测试，避免后续版本再次出现同类问题。
+          </p>
         </div>
       </section>
     </main>
 
     <button class="back-top" type="button" aria-label="返回顶部">↑</button>
-
     <script src="./evaluation-data.js"></script>
     <script src="./evaluation-page.js"></script>
     <script src="./script.js"></script>

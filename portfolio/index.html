@@ -3,251 +3,174 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AI 产品经理作品集 | 论文润色 Agent</title>
+    <title>学术论文润色工具 | 产品作品集</title>
     <meta
       name="description"
-      content="AI 产品经理作品集，展示论文润色 Agent 的已实现 Demo、测试集评估、产品化方案、模型选择和竞品分析。"
+      content="面向学生和科研写作者的学术论文润色工具产品案例，展示产品背景、核心流程、功能设计、效果评估和后续规划。"
     />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
     <header class="topbar">
-      <a class="brand" href="#hero">AI PM Portfolio</a>
+      <a class="brand" href="#hero">Writing Polish</a>
       <nav class="nav" aria-label="作品集导航">
-        <a href="#implemented">已实现</a>
-        <a href="#product">产品设计</a>
-        <a href="./prd.html">产品 PRD</a>
-        <a href="./prototype.html">原型图</a>
-        <a href="./evaluation-prd.html">评测框架 PRD</a>
-        <a href="./history-prd.html">历史记录 PRD</a>
-        <a href="#evaluation">评估结果</a>
-        <a href="#ai-engineering">AI 设计</a>
-        <a href="#competition">竞品分析</a>
+        <a href="#problem">用户问题</a>
+        <a href="#solution">解决方案</a>
+        <a href="#workflow">使用流程</a>
+        <a href="#delivery">落地结果</a>
+        <a href="./prd.html">产品文档</a>
+        <a href="./evaluation.html">效果评估</a>
       </nav>
     </header>
 
     <main>
-      <section id="hero" class="hero">
-        <div class="hero-copy">
-          <p class="eyebrow">AI 产品经理作品集</p>
-          <h1>论文润色 Agent：从可运行 Demo 到产品化评估</h1>
+      <section id="hero" class="case-hero">
+        <div class="case-hero-copy">
+          <p class="eyebrow">PRODUCT CASE</p>
+          <h1>学术论文润色工具</h1>
           <p class="lead">
-            一个面向学术写作场景的 AI 产品案例。当前已完成前端页面、FastAPI 后端、模型接入、结构化输出、PostgreSQL 匿名历史记录和云端部署，并基于 15 条测试用例完成初步人工评分。
+            面向学生和科研写作者的论文段落润色工具。用户输入原文后，可以获得更正式的学术表达、修改说明、剩余问题提示，并在历史记录中回看之前的润色结果。
           </p>
           <div class="hero-actions">
-            <a class="primary-link" href="#implemented">看已实现能力</a>
-            <a class="secondary-link" href="./evaluation.html">查看完整评估表</a>
-            <a class="secondary-link" href="./evaluation-prd.html">查看评测框架 PRD</a>
-            <a class="secondary-link" href="./history-prd.html">查看历史记录 PRD</a>
+            <a class="primary-link" href="./prd.html">查看产品文档</a>
+            <a class="secondary-link" href="./evaluation.html">查看效果评估</a>
           </div>
         </div>
-        <div class="product-shot" aria-label="论文润色 Agent 界面示意">
-          <div class="shot-header">
-            <span></span>
-            <strong>论文润色 Agent</strong>
+
+        <div class="workspace-preview" aria-label="产品界面摘要">
+          <div class="preview-toolbar">
+            <strong>论文段落润色</strong>
+            <span>历史记录</span>
           </div>
-          <div class="shot-grid">
-            <div class="shot-panel">
-              <small>INPUT</small>
-              <p>“该方法可以提高系统性能”</p>
+          <div class="preview-body">
+            <div class="preview-pane">
+              <small>原文</small>
+              <p>该方法具有较好的应用效果，能够在一定程度上提升系统的运行效率。</p>
             </div>
-            <div class="shot-panel result">
-              <small>RESULT</small>
-              <p>能够提升系统性能的方法。</p>
+            <div class="preview-pane result">
+              <small>润色结果</small>
+              <p>实验结果表明，该方法能够在一定程度上提升系统运行效率，并表现出较好的应用效果。</p>
             </div>
           </div>
-          <div class="shot-bottom">
-            <span>修改明细</span>
-            <span>AI 知识点</span>
-            <span>匿名历史记录</span>
+          <div class="preview-notes">
+            <span>修改说明</span>
+            <span>问题提示</span>
+            <span>历史复盘</span>
           </div>
         </div>
       </section>
 
-      <section class="section intro">
-        <div>
-          <p class="eyebrow">POSITIONING</p>
-          <h2>个人定位</h2>
+      <section id="problem" class="section problem-band">
+        <div class="section-heading">
+          <p class="eyebrow">PROBLEM</p>
+          <h2>用户真正需要的不是“改得更花”，而是“改得可靠”</h2>
         </div>
+        <div class="problem-list">
+          <div>
+            <strong>表达不够正式</strong>
+            <p>论文初稿中常出现“效果不错”“有一定作用”等泛化表达，用户不知道如何改成更客观的学术语言。</p>
+          </div>
+          <div>
+            <strong>担心改变原意</strong>
+            <p>实验数据、研究结论、技术术语不能被随意改写，用户需要知道工具是否保留了原文事实。</p>
+          </div>
+          <div>
+            <strong>修改过程难复盘</strong>
+            <p>多次润色结果容易散落在对话里，用户很难回看之前的版本，也不方便比较哪次更合适。</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="solution" class="section split">
+        <div>
+          <p class="eyebrow">SOLUTION</p>
+          <h2>产品方案</h2>
+          <p>
+            第一版聚焦“论文段落润色”这一条主线，控制功能范围，先把输入、生成、解释、保存和复盘做通。相比通用聊天工具，本项目更强调固定任务流程和结果可解释。
+          </p>
+        </div>
+        <div class="solution-stack">
+          <div class="solution-item">
+            <span>01</span>
+            <div>
+              <strong>段落润色</strong>
+              <p>用户输入论文段落，选择润色目标后生成更正式、清晰的表达。</p>
+            </div>
+          </div>
+          <div class="solution-item">
+            <span>02</span>
+            <div>
+              <strong>修改说明</strong>
+              <p>展示主要修改点，帮助用户理解为什么这样调整。</p>
+            </div>
+          </div>
+          <div class="solution-item">
+            <span>03</span>
+            <div>
+              <strong>历史记录</strong>
+              <p>保存每次任务的原文、结果、状态和时间，支持后续回看。</p>
+            </div>
+          </div>
+          <div class="solution-item">
+            <span>04</span>
+            <div>
+              <strong>效果评估</strong>
+              <p>用测试用例检查语义保持、学术表达、事实安全和输出完整性。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="workflow" class="section workflow-board">
+        <div class="section-heading">
+          <p class="eyebrow">WORKFLOW</p>
+          <h2>核心使用流程</h2>
+          <p>流程设计尽量贴近用户写论文时的动作：输入一段、查看修改、判断是否采用、必要时回看历史。</p>
+        </div>
+        <div class="workflow-lane">
+          <div><span>1</span><strong>输入段落</strong><p>粘贴需要润色的论文内容。</p></div>
+          <div><span>2</span><strong>选择目标</strong><p>选择学术化、凝练化或逻辑优化。</p></div>
+          <div><span>3</span><strong>生成结果</strong><p>返回润色文本和修改说明。</p></div>
+          <div><span>4</span><strong>检查风险</strong><p>提示是否存在信息不足或可能过度改写。</p></div>
+          <div><span>5</span><strong>保存记录</strong><p>记录任务状态，方便后续复盘。</p></div>
+        </div>
+      </section>
+
+      <section id="delivery" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">DELIVERY</p>
+          <h2>当前完成内容</h2>
+          <p>这个项目既有可运行页面，也有产品文档和效果评估，用于说明从需求到验证的完整思路。</p>
+        </div>
+        <div class="delivery-grid">
+          <a class="delivery-card" href="./prd.html">
+            <small>DOCUMENT</small>
+            <strong>产品文档</strong>
+            <p>整理用户画像、功能范围、历史记录设计、评分规则和验收标准。</p>
+          </a>
+          <a class="delivery-card" href="./evaluation.html">
+            <small>REPORT</small>
+            <strong>效果评估</strong>
+            <p>基于 15 条测试用例，分析润色质量、低分案例和优化方向。</p>
+          </a>
+          <div class="delivery-card">
+            <small>IMPLEMENTATION</small>
+            <strong>Demo 落地</strong>
+            <p>完成前端页面、后端接口、模型调用、PostgreSQL 历史记录和 Docker 部署。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section closing">
+        <p class="eyebrow">NEXT STEP</p>
+        <h2>后续规划</h2>
         <p>
-          我希望成为能理解业务、懂 AI 链路、能推动产品落地的 AI 产品经理。这个项目用一个真实可运行的 Demo 展示我对用户场景、Prompt、模型调用、数据库记录、测试评估和产品化路线的理解。
+          下一步会优先完善结果对比、历史详情、用户反馈和更系统的测试用例。多模型对比、账号体系和导出功能会放在产品稳定后逐步迭代。
         </p>
       </section>
-
-      <section id="implemented" class="section">
-        <div class="section-heading">
-          <p class="eyebrow">IMPLEMENTED</p>
-          <h2>当前已经实际完成的部分</h2>
-          <p>这些能力已经实际落地，构成了当前论文润色 Agent 的核心产品闭环。</p>
-        </div>
-        <div class="feature-grid">
-          <div class="feature"><span class="status-tag done">已实现</span>Vue 3 前端交互页面</div>
-          <div class="feature"><span class="status-tag done">已实现</span>FastAPI 润色接口</div>
-          <div class="feature"><span class="status-tag done">已实现</span>ModelGate / OpenAI 兼容接入</div>
-          <div class="feature"><span class="status-tag done">已实现</span>结构化 Prompt 输出</div>
-          <div class="feature"><span class="status-tag done">已实现</span>PostgreSQL 匿名任务记录</div>
-          <div class="feature"><span class="status-tag done">已实现</span>Docker Compose 云端部署</div>
-        </div>
-      </section>
-
-      <section id="product" class="section">
-        <div class="section-heading">
-          <p class="eyebrow">PRODUCT</p>
-          <h2>产品背景与用户痛点</h2>
-          <p>
-            论文写作用户并不是单纯想让 AI “改得更好看”，而是希望获得更正式的表达、理解修改原因，并能追踪多次修改结果。
-          </p>
-        </div>
-        <div class="cards three">
-          <article class="card">
-            <h3>表达不够学术</h3>
-            <p>原文常出现口语化、主观化或表达冗余的问题，需要转换为更客观、凝练的论文表达。</p>
-          </article>
-          <article class="card">
-            <h3>修改不可解释</h3>
-            <p>通用聊天工具通常只给结果，用户不知道 AI 改了哪里，也难以判断是否保留了原意。</p>
-          </article>
-          <article class="card">
-            <h3>结果难复盘</h3>
-            <p>多次润色后结果散落在对话中，缺少任务记录、版本对比和后续质量评估基础。</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="section split">
-        <div>
-          <p class="eyebrow">WORKFLOW</p>
-          <h2>当前 Demo 的真实工作流</h2>
-          <p>
-            第一阶段优先验证核心闭环：输入文本、选择润色需求、生成结构化结果、保存匿名历史记录。这个选择降低了使用门槛，也为后续登录、质量评估和数据闭环打基础。
-          </p>
-        </div>
-        <ol class="flow">
-          <li>用户输入论文段落</li>
-          <li>选择学术化润色、逻辑优化等需求</li>
-          <li>后端创建 running 任务记录</li>
-          <li>调用大模型返回结构化结果</li>
-          <li>保存 success / failed 状态与结果</li>
-          <li>前端展示历史记录，可点击恢复结果</li>
-        </ol>
-      </section>
-
-      <section id="evaluation" class="section">
-        <div class="section-heading">
-          <p class="eyebrow">EVALUATION</p>
-          <h2>小规模测试集与效果评估</h2>
-          <p>
-            我使用 15 条测试用例进行人工评分，覆盖口语化表达、学术表达不足、长句逻辑、术语密集、事实敏感、边界输入和 Prompt 注入等场景。
-          </p>
-        </div>
-        <div class="metric-grid">
-          <div class="metric"><strong>15</strong><span>测试用例</span></div>
-          <div class="metric"><strong>7</strong><span>覆盖场景</span></div>
-          <div class="metric"><strong>4.43</strong><span>平均分 / 5</span></div>
-          <div class="metric"><strong>100%</strong><span>结构完整率</span></div>
-        </div>
-        <div class="cards three">
-          <article class="card">
-            <h3>表现较好</h3>
-            <p>术语保持、数值保持、长句逻辑优化和 Prompt 注入防护表现较稳。</p>
-          </article>
-          <article class="card">
-            <h3>主要问题</h3>
-            <p>短文本输入容易过度补全，价值判断类表达有轻微拔高。</p>
-          </article>
-          <article class="card">
-            <h3>下一步优化</h3>
-            <p>增加最小输入长度提示，并在 Prompt 中约束“不拔高、不新增结论”。</p>
-          </article>
-        </div>
-        <div class="hero-actions section-actions">
-          <a class="primary-link" href="./evaluation.html">查看完整评估表</a>
-        </div>
-      </section>
-
-      <section id="ai-engineering" class="section">
-        <div class="section-heading">
-          <p class="eyebrow">AI ENGINEERING</p>
-          <h2>Prompt 设计与模型选择</h2>
-          <p>
-            Prompt 约束和模型接入已经实现；系统化多模型对比还没有做完，所以这里明确写成“选择依据”和“后续对比计划”。
-          </p>
-        </div>
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th>设计点</th>
-                <th>状态</th>
-                <th>产品考虑</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>角色约束</td>
-                <td><span class="status-tag done">已实现</span></td>
-                <td>让模型扮演学术论文润色助手，输出更贴近论文语境。</td>
-              </tr>
-              <tr>
-                <td>任务约束</td>
-                <td><span class="status-tag done">已实现</span></td>
-                <td>不只润色，还要解释修改原因、指出剩余问题和学习建议。</td>
-              </tr>
-              <tr>
-                <td>结构约束</td>
-                <td><span class="status-tag done">已实现</span></td>
-                <td>要求固定 JSON 字段，方便前端展示和数据库记录。</td>
-              </tr>
-              <tr>
-                <td>事实约束</td>
-                <td><span class="status-tag planned">待加强</span></td>
-                <td>结合事实敏感测试用例，强化“不新增事实、不改变结论”的校验。</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="note">
-          第一阶段选择 OpenAI 兼容模型，是因为它在中文理解、指令遵循和结构化输出上更适合作为 Demo 验证模型。后续会用同一套测试集对比 Qwen、DeepSeek、Claude 等模型。
-        </div>
-      </section>
-
-      <section id="competition" class="section">
-        <div class="section-heading">
-          <p class="eyebrow">COMPETITION</p>
-          <h2>竞品分析与定位</h2>
-          <p>这部分是基于同类产品功能观察提炼的产品定位，不包装成完整商业竞品报告。</p>
-        </div>
-        <div class="cards five">
-          <article class="card">
-            <h3>Paperpal</h3>
-            <p>偏学术写作，适合借鉴投稿导向和论文场景专业化能力。</p>
-          </article>
-          <article class="card">
-            <h3>Grammarly</h3>
-            <p>强在跨平台写作辅助，说明写作工具要融入用户工作流。</p>
-          </article>
-          <article class="card">
-            <h3>秘塔写作猫</h3>
-            <p>中文写作辅助能力完整，说明本土化表达和中文场景很重要。</p>
-          </article>
-          <article class="card">
-            <h3>QuillBot</h3>
-            <p>强在改写和 paraphrase，启发多种风格和改写强度设计。</p>
-          </article>
-          <article class="card">
-            <h3>ChatGPT</h3>
-            <p>自由度高，但专用产品要靠结构化流程和稳定体验形成差异。</p>
-          </article>
-        </div>
-        <div class="note">
-          我的差异化定位：当前 Demo 聚焦中文论文段落润色，强调可解释润色、历史追踪和学习反馈。未来如果继续做，需要通过更系统的竞品体验和用户访谈验证这个定位。
-        </div>
-      </section>
-
     </main>
 
     <button class="back-top" type="button" aria-label="返回顶部">↑</button>
-
     <script src="./script.js"></script>
   </body>
 </html>
