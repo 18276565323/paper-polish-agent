@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>论文润色 Agent | 历史记录功能 PRD</title>
+    <meta
+      name="description"
+      content="论文润色 Agent 历史记录与结果复盘功能 PRD，包含功能背景、信息架构、字段设计、流程、异常兜底、埋点指标和验收标准。"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="./index.html">AI PM Portfolio</a>
+      <nav class="nav" aria-label="历史记录功能 PRD 导航">
+        <a href="./index.html">作品集</a>
+        <a href="./prd.html">产品 PRD</a>
+        <a href="./evaluation-prd.html">评测框架 PRD</a>
+        <a href="./prototype.html">原型图</a>
+        <a href="#fields">字段设计</a>
+        <a href="#flow">流程</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="section evaluation-hero">
+        <p class="eyebrow">FEATURE PRD</p>
+        <h1>历史记录与结果复盘功能 PRD</h1>
+        <p class="lead">
+          历史记录不是一个“附属列表”，而是 AI 产品从单次生成走向持续优化的基础设施。该功能让用户能找回、对比和复盘润色结果，也让产品侧沉淀输入、输出、模型、Prompt 版本和 Bad Case 数据，为后续多模型评测和用户体系打基础。
+        </p>
+      </section>
+
+      <section class="section doc-layout">
+        <aside class="doc-toc" aria-label="目录">
+          <strong>目录</strong>
+          <a href="#background">一、功能背景</a>
+          <a href="#users">二、用户场景</a>
+          <a href="#architecture">三、页面入口与信息架构</a>
+          <a href="#fields">四、字段设计</a>
+          <a href="#flow">五、核心交互流程</a>
+          <a href="#status">六、状态流转</a>
+          <a href="#fallback">七、异常与兜底</a>
+          <a href="#metrics">八、数据埋点与指标</a>
+          <a href="#iteration">九、后续迭代</a>
+          <a href="#acceptance">十、验收标准</a>
+        </aside>
+
+        <div class="doc-content">
+          <section id="background" class="doc-section">
+            <p class="eyebrow">SECTION 01</p>
+            <h2>一、功能背景</h2>
+            <p>
+              用户使用论文润色工具时，往往不是一次性完成任务，而是会多次输入、对比结果、复制片段、回看之前版本。如果没有历史记录，用户只能依赖浏览器当前状态，一旦刷新或关闭页面，结果就会丢失。对于产品侧来说，没有历史数据也无法复盘模型效果、定位 Bad Case 或评估 Prompt 版本。
+            </p>
+            <div class="cards three">
+              <article class="card">
+                <h3>用户价值</h3>
+                <p>支持找回历史润色结果、对比不同版本、继续修改论文段落，降低重复操作成本。</p>
+              </article>
+              <article class="card">
+                <h3>产品价值</h3>
+                <p>沉淀任务数据，为效果评估、Prompt 迭代、模型对比和用户行为分析提供依据。</p>
+              </article>
+              <article class="card">
+                <h3>技术价值</h3>
+                <p>建立任务状态表和结果存储结构，为后续登录体系、额度体系和多租户数据隔离打基础。</p>
+              </article>
+            </div>
+          </section>
+
+          <section id="users" class="doc-section">
+            <p class="eyebrow">SECTION 02</p>
+            <h2>二、用户场景</h2>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>用户</th>
+                    <th>场景</th>
+                    <th>需求</th>
+                    <th>功能响应</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>本科毕业生</td>
+                    <td>多次润色毕业论文段落。</td>
+                    <td>希望找回之前比较满意的表达。</td>
+                    <td>按时间展示历史任务，点击后恢复原文和结果。</td>
+                  </tr>
+                  <tr>
+                    <td>研究生</td>
+                    <td>对实验结果段落反复修改。</td>
+                    <td>希望确认数值和结论没有被 AI 改错。</td>
+                    <td>展示原文、润色后文本、修改说明和模型版本。</td>
+                  </tr>
+                  <tr>
+                    <td>产品评测者</td>
+                    <td>批量测试模型在不同用例上的表现。</td>
+                    <td>需要记录成功、失败、低分用例。</td>
+                    <td>保存任务状态、错误信息、评分和 Bad Case 标签。</td>
+                  </tr>
+                  <tr>
+                    <td>后续注册用户</td>
+                    <td>跨设备查看自己的润色记录。</td>
+                    <td>希望历史记录与账号绑定。</td>
+                    <td>匿名历史迁移到用户账号，支持分页和搜索。</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section id="architecture" class="doc-section">
+            <p class="eyebrow">SECTION 03</p>
+            <h2>三、页面入口与信息架构</h2>
+            <p>V1 阶段采用“主工作台右侧历史面板 + 历史详情页规划”的轻量结构，先满足快速回看和结果恢复。</p>
+            <ol class="flow">
+              <li>主工作台右侧显示最近 10 条任务，包含状态、时间、原文摘要和模型信息。</li>
+              <li>点击某条历史记录后，将原文、润色结果、修改说明和剩余问题恢复到主结果区。</li>
+              <li>失败任务展示错误状态和重试入口，不覆盖用户原始输入。</li>
+              <li>后续独立历史页支持搜索、筛选、收藏、评分和导出。</li>
+            </ol>
+            <div class="wireframe compact-wire">
+              <div class="wireframe-header">
+                <strong>历史记录信息架构</strong>
+                <span>主工作台内嵌 + 后续独立详情页</span>
+              </div>
+              <div class="wireframe-body history-layout">
+                <div class="wire-panel">
+                  <div class="wire-label">历史列表</div>
+                  <div class="wire-item selected">最近任务 · 成功 · 4.8</div>
+                  <div class="wire-item">失败任务 · 可重试</div>
+                  <div class="wire-item">收藏任务 · 可复用</div>
+                </div>
+                <div class="wire-panel">
+                  <div class="wire-label">历史详情</div>
+                  <div class="wire-input result-text">原文、润色结果、修改说明、模型、Prompt 版本、任务状态。</div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section id="fields" class="doc-section">
+            <p class="eyebrow">SECTION 04</p>
+            <h2>四、字段设计</h2>
+            <p>字段设计需要同时服务用户回看、问题排查和后续评测分析。V1 匿名阶段不采集姓名、手机号等身份信息。</p>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>字段</th>
+                    <th>类型</th>
+                    <th>说明</th>
+                    <th>是否 V1 必需</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>task_id</td>
+                    <td>string</td>
+                    <td>任务唯一编号，用于前后端查询和问题定位。</td>
+                    <td>P0</td>
+                  </tr>
+                  <tr>
+                    <td>input_text</td>
+                    <td>text</td>
+                    <td>用户输入的原始论文段落。</td>
+                    <td>P0</td>
+                  </tr>
+                  <tr>
+                    <td>polished_text</td>
+                    <td>text</td>
+                    <td>模型返回的润色后文本。</td>
+                    <td>P0</td>
+                  </tr>
+                  <tr>
+                    <td>result_json</td>
+                    <td>json</td>
+                    <td>包含修改说明、剩余问题、知识点等结构化结果。</td>
+                    <td>P0</td>
+                  </tr>
+                  <tr>
+                    <td>status</td>
+                    <td>enum</td>
+                    <td>running、success、failed 三种任务状态。</td>
+                    <td>P0</td>
+                  </tr>
+                  <tr>
+                    <td>model_provider</td>
+                    <td>string</td>
+                    <td>模型服务提供方，如 modelgate。</td>
+                    <td>P0</td>
+                  </tr>
+                  <tr>
+                    <td>model_name</td>
+                    <td>string</td>
+                    <td>实际调用的模型 ID，用于效果复盘和成本统计。</td>
+                    <td>P0</td>
+                  </tr>
+                  <tr>
+                    <td>prompt_version</td>
+                    <td>string</td>
+                    <td>Prompt 版本号，用于后续 A/B 测试和回归评测。</td>
+                    <td>P1</td>
+                  </tr>
+                  <tr>
+                    <td>score</td>
+                    <td>number</td>
+                    <td>人工或自动评估分数。</td>
+                    <td>P1</td>
+                  </tr>
+                  <tr>
+                    <td>badcase_tag</td>
+                    <td>string</td>
+                    <td>低分结果的问题类型，如过度扩写、事实错误、格式失败。</td>
+                    <td>P1</td>
+                  </tr>
+                  <tr>
+                    <td>created_at</td>
+                    <td>datetime</td>
+                    <td>任务创建时间。</td>
+                    <td>P0</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section id="flow" class="doc-section">
+            <p class="eyebrow">SECTION 05</p>
+            <h2>五、核心交互流程</h2>
+            <h3>5.1 新建润色任务</h3>
+            <ol class="flow">
+              <li>用户输入论文段落，选择润色目标并点击“开始润色”。</li>
+              <li>前端调用后端接口，后端创建 running 状态任务。</li>
+              <li>后端调用模型并解析结构化输出。</li>
+              <li>调用成功后更新为 success，并保存结果字段。</li>
+              <li>前端展示结果，同时刷新右侧历史记录。</li>
+            </ol>
+            <h3>5.2 查看历史任务</h3>
+            <ol class="flow">
+              <li>用户点击历史记录中的任务卡片。</li>
+              <li>前端根据 task_id 获取任务详情。</li>
+              <li>页面恢复原文、润色结果、修改说明、剩余问题和知识点。</li>
+              <li>如果任务为 failed，则展示失败原因和重新润色入口。</li>
+            </ol>
+            <h3>5.3 复盘低分结果</h3>
+            <ol class="flow">
+              <li>评测者在评估页面标记低分任务。</li>
+              <li>为任务添加 Bad Case 标签和问题说明。</li>
+              <li>将该任务沉淀为回归测试用例。</li>
+              <li>Prompt 或模型变更后重新运行该用例，比较结果变化。</li>
+            </ol>
+          </section>
+
+          <section id="status" class="doc-section">
+            <p class="eyebrow">SECTION 06</p>
+            <h2>六、状态流转</h2>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>状态</th>
+                    <th>触发条件</th>
+                    <th>页面展示</th>
+                    <th>后续动作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>running</td>
+                    <td>用户提交任务，后端已创建记录。</td>
+                    <td>显示生成中，不允许重复提交同一任务。</td>
+                    <td>等待模型返回或超时。</td>
+                  </tr>
+                  <tr>
+                    <td>success</td>
+                    <td>模型返回并成功解析结构化结果。</td>
+                    <td>展示润色结果、修改说明和历史卡片。</td>
+                    <td>允许复制、查看详情、加入评测。</td>
+                  </tr>
+                  <tr>
+                    <td>failed</td>
+                    <td>模型调用失败、超时、JSON 解析失败或数据库写入失败。</td>
+                    <td>展示失败提示，保留用户原文。</td>
+                    <td>允许重试，记录错误类型。</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section id="fallback" class="doc-section">
+            <p class="eyebrow">SECTION 07</p>
+            <h2>七、异常与兜底</h2>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>异常场景</th>
+                    <th>用户提示</th>
+                    <th>系统处理</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>输入为空</td>
+                    <td>请先输入需要润色的论文段落。</td>
+                    <td>不创建任务，不调用模型。</td>
+                  </tr>
+                  <tr>
+                    <td>输入过短</td>
+                    <td>当前文本较短，建议补充上下文以获得更可靠的润色结果。</td>
+                    <td>允许继续，但在结果中提示信息不足风险。</td>
+                  </tr>
+                  <tr>
+                    <td>模型调用失败</td>
+                    <td>模型服务暂时不可用，请稍后重试。</td>
+                    <td>任务记为 failed，保存错误类型。</td>
+                  </tr>
+                  <tr>
+                    <td>结构化解析失败</td>
+                    <td>结果格式异常，请重新生成。</td>
+                    <td>保留原始输出用于排查，前端展示兜底文案。</td>
+                  </tr>
+                  <tr>
+                    <td>历史记录加载失败</td>
+                    <td>历史记录暂时无法加载，不影响继续润色。</td>
+                    <td>主流程可继续，记录接口错误。</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section id="metrics" class="doc-section">
+            <p class="eyebrow">SECTION 08</p>
+            <h2>八、数据埋点与指标</h2>
+            <div class="feature-grid">
+              <div class="feature">history_view：用户是否查看历史记录。</div>
+              <div class="feature">history_restore：用户是否点击历史任务恢复结果。</div>
+              <div class="feature">copy_result：用户是否复制润色结果。</div>
+              <div class="feature">retry_failed_task：失败任务是否被重试。</div>
+              <div class="feature">task_success_rate：任务成功率。</div>
+              <div class="feature">badcase_mark_rate：低分用例标记比例。</div>
+            </div>
+            <div class="note">
+              指标解读：如果历史记录点击率高，说明用户有复盘需求；如果复制率高，说明结果有实际使用价值；如果 failed 重试率高，说明失败兜底文案和模型稳定性需要重点优化。
+            </div>
+          </section>
+
+          <section id="iteration" class="doc-section">
+            <p class="eyebrow">SECTION 09</p>
+            <h2>九、后续迭代</h2>
+            <div class="timeline">
+              <div>
+                <strong>V1.0 匿名历史记录</strong>
+                <p>保存最近任务，支持查看、恢复、失败提示和基础状态展示。</p>
+              </div>
+              <div>
+                <strong>V1.1 历史详情与筛选</strong>
+                <p>支持搜索、筛选成功/失败、查看模型和 Prompt 版本、手动评分和 Bad Case 标签。</p>
+              </div>
+              <div>
+                <strong>V1.2 登录与数据迁移</strong>
+                <p>支持用户登录、匿名历史迁移、收藏、导出、额度统计和跨设备同步。</p>
+              </div>
+              <div>
+                <strong>V1.3 模型评测闭环</strong>
+                <p>将历史任务接入多模型对比和 Prompt 回归测试，形成质量看板。</p>
+              </div>
+            </div>
+          </section>
+
+          <section id="acceptance" class="doc-section">
+            <p class="eyebrow">SECTION 10</p>
+            <h2>十、验收标准</h2>
+            <div class="cards three">
+              <article class="card">
+                <h3>任务可追踪</h3>
+                <p>每次润色任务都有唯一编号、任务状态、创建时间、输入和输出记录。</p>
+              </article>
+              <article class="card">
+                <h3>结果可恢复</h3>
+                <p>用户点击历史任务后，页面能恢复原文、润色结果和结构化说明。</p>
+              </article>
+              <article class="card">
+                <h3>失败可解释</h3>
+                <p>模型失败、解析失败和历史加载失败都有明确提示，不丢失用户输入。</p>
+              </article>
+              <article class="card">
+                <h3>数据可复盘</h3>
+                <p>记录模型、Prompt 版本和错误类型，为评测和 Bad Case 分析提供依据。</p>
+              </article>
+              <article class="card">
+                <h3>隐私可控</h3>
+                <p>匿名阶段不采集个人身份信息，后续登录版本再设计用户数据隔离。</p>
+              </article>
+              <article class="card">
+                <h3>入口清晰</h3>
+                <p>主工作台能直接看到最近任务，独立历史页规划支持后续扩展。</p>
+              </article>
+            </div>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <button class="back-top" type="button" aria-label="返回顶部">↑</button>
+    <script src="./script.js"></script>
+  </body>
+</html>
