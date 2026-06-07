@@ -3,100 +3,100 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>???? Agent | ?????</title>
+    <title>论文润色 Agent | 低保真原型</title>
     <meta
       name="description"
-      content="???? Agent ?????????????????????????????????????"
+      content="论文润色 Agent 低保真原型页面，展示主工作台、历史记录、结果对比、评估报告和用户中心规划。"
     />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
     <header class="topbar">
       <a class="brand" href="./index.html">AI PM Portfolio</a>
-      <nav class="nav" aria-label="?????">
-        <a href="./index.html">???</a>
+      <nav class="nav" aria-label="原型页导航">
+        <a href="./index.html">作品集</a>
         <a href="./prd.html">PRD</a>
-        <a href="./evaluation.html">????</a>
-        <a href="#workspace">????</a>
-        <a href="#history">????</a>
-        <a href="#evaluation-wireframe">???</a>
+        <a href="./evaluation.html">评估报告</a>
+        <a href="#workspace">主工作台</a>
+        <a href="#history">历史记录</a>
+        <a href="#evaluation-wireframe">评估页</a>
       </nav>
     </header>
 
     <main>
       <section class="section evaluation-hero">
         <p class="eyebrow">LOW-FIDELITY PROTOTYPE</p>
-        <h1>Paper Polish Agent ?????</h1>
+        <h1>Paper Polish Agent 低保真原型</h1>
         <p class="lead">
-          ????????????????????????????????????????????????????????????????????????????????????????????????
+          这是一版面向产品讲解的低保真原型，用来说明论文润色工具的核心页面、用户路径和信息架构。重点不是视觉精修，而是让面试官快速看懂：用户从输入文本到获得结果、查看历史、对比修改、评估效果的完整闭环。
         </p>
       </section>
 
       <section id="workspace" class="section">
         <div class="section-heading">
           <p class="eyebrow">SCREEN 01</p>
-          <h2>??????</h2>
-          <p>?????????????????????????????????????????????????????????????????????</p>
+          <h2>润色主工作台</h2>
+          <p>主工作台承载最高频流程：输入论文段落、选择润色目标、提交任务、查看结构化结果。页面右侧保留匿名历史记录，让用户能快速回看和复用之前的输出。</p>
         </div>
         <div class="wireframe wireframe-large">
           <div class="wireframe-header">
-            <strong>???? Agent</strong>
-            <span>ModelGate ? Prompt v1.0 ? ????</span>
+            <strong>论文润色 Agent</strong>
+            <span>ModelGate · Prompt v1.0 · 匿名模式</span>
           </div>
           <div class="wireframe-body workspace-layout">
             <div class="wire-panel input-panel">
-              <div class="wire-label">????</div>
+              <div class="wire-label">原文输入</div>
               <div class="wire-input textarea">
-                ????????????????????????????????? AI ?????
+                请输入需要润色的论文段落。系统建议输入完整上下文，避免过短文本导致 AI 过度补充。
               </div>
               <div class="wire-row between">
-                <span class="wire-muted">???128</span>
-                <span class="wire-muted">???80-800 ?</span>
+                <span class="wire-muted">字数：128</span>
+                <span class="wire-muted">建议：80-800 字</span>
               </div>
               <div class="wire-columns three-cols">
                 <div>
-                  <div class="wire-label">????</div>
-                  <div class="wire-select">?????</div>
+                  <div class="wire-label">润色目标</div>
+                  <div class="wire-select">学术化表达</div>
                 </div>
                 <div>
-                  <div class="wire-label">????</div>
-                  <div class="wire-segment"><span>??</span><strong>??</strong><span>??</span></div>
+                  <div class="wire-label">润色强度</div>
+                  <div class="wire-segment"><span>轻度</span><strong>中度</strong><span>深度</span></div>
                 </div>
                 <div>
-                  <div class="wire-label">????</div>
-                  <div class="wire-select">????</div>
+                  <div class="wire-label">表达风格</div>
+                  <div class="wire-select">严谨凝练</div>
                 </div>
               </div>
-              <button class="wire-button primary" type="button">????</button>
+              <button class="wire-button primary" type="button">开始润色</button>
             </div>
 
             <div class="wire-panel result-panel">
               <div class="wire-row between">
-                <div class="wire-label">?????</div>
-                <div class="wire-actions"><span>??</span><span>????</span></div>
+                <div class="wire-label">优化后文本</div>
+                <div class="wire-actions"><span>复制</span><span>重新生成</span></div>
               </div>
               <div class="wire-input result-text">
-                ???????????????????????????????????????
+                实验结果表明，该方法能够在一定程度上提升系统运行效率，并表现出较好的应用效果。
               </div>
               <div class="wire-tabs">
-                <span class="wire-tab active">????</span>
-                <span class="wire-tab">????</span>
-                <span class="wire-tab">AI ???</span>
-                <span class="wire-tab">????</span>
+                <span class="wire-tab active">修改明细</span>
+                <span class="wire-tab">剩余问题</span>
+                <span class="wire-tab">AI 知识点</span>
+                <span class="wire-tab">实操要点</span>
               </div>
               <div class="wire-list">
-                <div class="wire-item">?????????????????????</div>
-                <div class="wire-item">??????????????????????</div>
-                <div class="wire-item">?????????????????</div>
+                <div class="wire-item">将“较好的应用效果”改为更客观的结果描述。</div>
+                <div class="wire-item">保留“效率提升”的原意，不新增具体实验数据。</div>
+                <div class="wire-item">建议补充实验指标，使结论更有支撑。</div>
               </div>
             </div>
 
             <aside class="wire-panel history-mini">
-              <div class="wire-label">????</div>
-              <div class="wire-item selected">TC011 ? ?? ? 4.8</div>
-              <div class="wire-item">TC007 ? ?? ? 4.5</div>
-              <div class="wire-item">TC014 ? ?? ? ???</div>
-              <div class="wire-item">TC001 ? ?? ? 4.0</div>
+              <div class="wire-label">最近任务</div>
+              <div class="wire-item selected">TC011 · 成功 · 4.8</div>
+              <div class="wire-item">TC007 · 成功 · 4.5</div>
+              <div class="wire-item">TC014 · 失败 · 待处理</div>
+              <div class="wire-item">TC001 · 成功 · 4.0</div>
             </aside>
           </div>
         </div>
@@ -105,51 +105,51 @@
       <section id="history" class="section">
         <div class="section-heading">
           <p class="eyebrow">SCREEN 02</p>
-          <h2>???????</h2>
-          <p>????????????????????????????????Prompt ??????????????????? Badcase ??????????????????</p>
+          <h2>匿名历史记录页</h2>
+          <p>历史记录不是简单列表，而是后续产品化的数据入口。它可以记录模型、Prompt 版本、任务状态、输入输出和评分，为后续 Badcase 分析、模型对比、用户登录迁移打基础。</p>
         </div>
         <div class="wireframe">
           <div class="wireframe-header">
-            <strong>????</strong>
-            <span>???????????</span>
+            <strong>历史记录</strong>
+            <span>按任务追踪每次润色结果</span>
           </div>
           <div class="wireframe-body history-layout">
             <div class="wire-panel">
               <div class="wire-tabs filter-tabs">
-                <span class="wire-tab active">??</span>
-                <span class="wire-tab">??</span>
-                <span class="wire-tab">??</span>
-                <span class="wire-tab">??</span>
+                <span class="wire-tab active">全部</span>
+                <span class="wire-tab">成功</span>
+                <span class="wire-tab">失败</span>
+                <span class="wire-tab">收藏</span>
               </div>
-              <div class="wire-input search">????????????</div>
+              <div class="wire-input search">搜索原文、模型、任务编号</div>
               <div class="wire-list task-list">
-                <div class="wire-item selected">TC011 ? ?????? ? 4.8</div>
-                <div class="wire-item">TC009 ? ?????? ? 4.7</div>
-                <div class="wire-item">TC013 ? ??????? ? 3.5</div>
-                <div class="wire-item">TC014 ? ?????? ? failed</div>
+                <div class="wire-item selected">TC011 · 数值事实保持 · 4.8</div>
+                <div class="wire-item">TC009 · 专业术语保持 · 4.7</div>
+                <div class="wire-item">TC013 · 短文本过度补全 · 3.5</div>
+                <div class="wire-item">TC014 · 前端按钮异常 · failed</div>
               </div>
             </div>
             <div class="wire-panel detail-panel">
               <div class="wire-row between">
                 <div>
-                  <div class="wire-label">????</div>
-                  <h3>TC011 ??????</h3>
+                  <div class="wire-label">任务详情</div>
+                  <h3>TC011 数值事实保持</h3>
                 </div>
                 <span class="status-tag done">success</span>
               </div>
               <div class="wire-columns">
                 <div>
-                  <div class="wire-label">??</div>
+                  <div class="wire-label">模型</div>
                   <div class="wire-input small">modelgate / gpt-5.5</div>
                 </div>
                 <div>
-                  <div class="wire-label">Prompt ??</div>
+                  <div class="wire-label">Prompt 版本</div>
                   <div class="wire-input small">polish_prompt_v1</div>
                 </div>
               </div>
-              <div class="wire-label">????</div>
-              <div class="wire-input result-text">???? 82.1% ??? 86.4%??????? 12.5%??????????</div>
-              <div class="wire-note">??????????????????????????????</div>
+              <div class="wire-label">输出摘要</div>
+              <div class="wire-input result-text">准确率由 82.1% 提升至 86.4%，响应时间降低 12.5%，事实数据保持完整。</div>
+              <div class="wire-note">产品价值：历史记录让用户能复盘结果，也让产品侧积累评估数据。</div>
             </div>
           </div>
         </div>
@@ -158,29 +158,29 @@
       <section id="comparison" class="section">
         <div class="section-heading">
           <p class="eyebrow">SCREEN 03</p>
-          <h2>?????</h2>
-          <p>???????? AI ?????????????????????????????????????????????????</p>
+          <h2>结果对比页</h2>
+          <p>结果对比用于解决 AI 写作工具最常见的不信任问题：用户不仅要看到“改后文本”，还要知道改了哪里、为什么改、是否改变原意。</p>
         </div>
         <div class="wireframe">
           <div class="wireframe-header">
-            <strong>?? / ?????</strong>
-            <span>?????</span>
+            <strong>原文 / 润色后对比</strong>
+            <span>可解释润色</span>
           </div>
           <div class="wireframe-body compare-layout">
             <div class="wire-panel">
-              <div class="wire-label">??</div>
-              <div class="wire-input compare-text">??????????????????????????????</div>
+              <div class="wire-label">原文</div>
+              <div class="wire-input compare-text">本文采用了一种算法方法，实验结果表明该方法取得了较好的效果。</div>
             </div>
             <div class="wire-panel">
-              <div class="wire-label">???</div>
-              <div class="wire-input compare-text">??????????????????????????????????????????</div>
+              <div class="wire-label">润色后</div>
+              <div class="wire-input compare-text">本文提出并验证了一种算法方法。实验结果表明，该方法在相关指标上取得了较为理想的表现。</div>
             </div>
             <div class="wire-panel change-panel">
-              <div class="wire-label">????????</div>
+              <div class="wire-label">修改点与风险提示</div>
               <div class="wire-list">
-                <div class="wire-item">???????????????????????????????</div>
-                <div class="wire-item">???????????????????????????</div>
-                <div class="wire-item warning">????????????????????????????</div>
+                <div class="wire-item">表达从“采用了一种算法方法”调整为“提出并验证”，学术性增强。</div>
+                <div class="wire-item">“较好的效果”被改写为“较为理想的表现”，仍然偏泛化。</div>
+                <div class="wire-item warning">风险：如果原文没有“提出”该算法，应改为“采用并验证”。</div>
               </div>
             </div>
           </div>
@@ -190,33 +190,33 @@
       <section id="evaluation-wireframe" class="section">
         <div class="section-heading">
           <p class="eyebrow">SCREEN 04</p>
-          <h2>?????????</h2>
-          <p>???? demo ??????????????????????????????????????? Badcase ?????????</p>
+          <h2>测试集与评估报告页</h2>
+          <p>评估页把 demo 从“能调用模型”推进到“能解释模型表现”。它展示测试集覆盖范围、评分结果、低分 Badcase 和下一步优化方向。</p>
         </div>
         <div class="wireframe">
           <div class="wireframe-header">
-            <strong>????</strong>
-            <span>15 ????? ? 7 ???</span>
+            <strong>评估报告</strong>
+            <span>15 条测试用例 · 7 类场景</span>
           </div>
           <div class="wireframe-body">
             <div class="wire-metrics">
-              <div><strong>15</strong><span>????</span></div>
-              <div><strong>4.43</strong><span>??? / 5</span></div>
-              <div><strong>100%</strong><span>?????</span></div>
-              <div><strong>3</strong><span>?? Badcase</span></div>
+              <div><strong>15</strong><span>测试用例</span></div>
+              <div><strong>4.43</strong><span>平均分 / 5</span></div>
+              <div><strong>100%</strong><span>结构完整率</span></div>
+              <div><strong>3</strong><span>重点 Badcase</span></div>
             </div>
             <div class="wire-tabs filter-tabs">
-              <span class="wire-tab active">??</span>
-              <span class="wire-tab">????</span>
-              <span class="wire-tab">???</span>
-              <span class="wire-tab">Prompt ??</span>
-              <span class="wire-tab">????</span>
+              <span class="wire-tab active">全部</span>
+              <span class="wire-tab">事实保持</span>
+              <span class="wire-tab">短文本</span>
+              <span class="wire-tab">Prompt 注入</span>
+              <span class="wire-tab">异常输入</span>
             </div>
             <div class="wire-table">
-              <div class="wire-table-row head"><span>??</span><span>??</span><span>??</span><span>??</span></div>
-              <div class="wire-table-row"><span>TC011</span><span>??????</span><span>4.8</span><span>????</span></div>
-              <div class="wire-table-row"><span>TC013</span><span>?????</span><span>3.5</span><span>??????</span></div>
-              <div class="wire-table-row"><span>TC014</span><span>????</span><span>failed</span><span>???????</span></div>
+              <div class="wire-table-row head"><span>编号</span><span>场景</span><span>评分</span><span>结论</span></div>
+              <div class="wire-table-row"><span>TC011</span><span>数值事实保持</span><span>4.8</span><span>表现稳定</span></div>
+              <div class="wire-table-row"><span>TC013</span><span>短文本输入</span><span>3.5</span><span>容易过度补全</span></div>
+              <div class="wire-table-row"><span>TC014</span><span>异常操作</span><span>failed</span><span>按钮兜底待优化</span></div>
             </div>
           </div>
         </div>
@@ -225,27 +225,27 @@
       <section id="account" class="section">
         <div class="section-heading">
           <p class="eyebrow">SCREEN 05</p>
-          <h2>?????????</h2>
-          <p>??????? demo ?????????????????????????? Prompt ????????? V1.2 ??????????????????</p>
+          <h2>用户中心与后续版本</h2>
+          <p>后续如果从匿名 demo 走向真实多用户产品，需要引入账号、额度、收藏、导出和 Prompt 版本管理。这里作为 V1.2 规划展示，不强行写成当前已实现功能。</p>
         </div>
         <div class="wireframe">
           <div class="wireframe-header">
-            <strong>????</strong>
-            <span>V1.2 ?????</span>
+            <strong>用户中心</strong>
+            <span>V1.2 产品化规划</span>
           </div>
           <div class="wireframe-body account-grid">
-            <div class="wire-panel"><div class="wire-label">????</div><p>?????????????</p></div>
-            <div class="wire-panel"><div class="wire-label">????</div><p>??????????????????</p></div>
-            <div class="wire-panel"><div class="wire-label">????</div><p>??????????????????????</p></div>
-            <div class="wire-panel"><div class="wire-label">Prompt ??</div><p>??????????????? A/B ???</p></div>
-            <div class="wire-panel"><div class="wire-label">????</div><p>?? Markdown / Word ??????????????</p></div>
-            <div class="wire-panel"><div class="wire-label">????</div><p>?????/??/??????????????????</p></div>
+            <div class="wire-panel"><div class="wire-label">我的历史</div><p>跨设备同步润色任务和结果。</p></div>
+            <div class="wire-panel"><div class="wire-label">我的收藏</div><p>收藏高质量润色结果，形成个人表达库。</p></div>
+            <div class="wire-panel"><div class="wire-label">我的额度</div><p>按免费额度、套餐额度、单次成本管理模型调用。</p></div>
+            <div class="wire-panel"><div class="wire-label">Prompt 版本</div><p>记录不同提示词版本的效果，支持 A/B 测试。</p></div>
+            <div class="wire-panel"><div class="wire-label">导出记录</div><p>支持 Markdown / Word 导出，方便论文写作流程衔接。</p></div>
+            <div class="wire-panel"><div class="wire-label">反馈入口</div><p>收集“有用/无用/改变原意”等用户反馈，形成质量闭环。</p></div>
           </div>
         </div>
       </section>
     </main>
 
-    <button class="back-top" type="button" aria-label="????">?</button>
+    <button class="back-top" type="button" aria-label="返回顶部">↑</button>
     <script src="./script.js"></script>
   </body>
 </html>
