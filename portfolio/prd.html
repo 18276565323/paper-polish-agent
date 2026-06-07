@@ -124,6 +124,79 @@
             </table>
           </div>
         </div>
+
+        <div class="prd-section">
+          <h3>6. 用户流程与输入输出</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>环节</th><th>用户输入</th><th>系统处理</th><th>页面输出</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>输入阶段</td><td>论文段落、润色目标、润色强度、表达风格。</td><td>校验是否为空、是否过短、是否明显不是论文文本。</td><td>输入提示、字数提示、可提交状态。</td></tr>
+                <tr><td>生成阶段</td><td>用户确认提交的文本和参数。</td><td>创建任务记录，拼接提示词，调用模型。</td><td>生成中状态、按钮禁用、任务状态更新。</td></tr>
+                <tr><td>结果阶段</td><td>无新增输入。</td><td>解析模型结构化结果，保存历史记录。</td><td>润色文本、修改说明、剩余问题、知识点、复制入口</td></tr>
+                <tr><td>复盘阶段</td><td>点击历史任务。</td><td>按 task_id 查询历史详情。</td><td>恢复原文、结果、状态、模型信息和创建时间。</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="prd-section">
+          <h3>7. 数据来源与调用逻辑</h3>
+          <div class="prd-cards three">
+            <article><strong>用户输入数据</strong><p>来自前端文本框和参数选择，包括原文、润色目标、强度、风格。</p></article>
+            <article><strong>模型返回数据</strong><p>来自后端模型接口，要求返回固定结构字段，便于页面展示和数据库保存。</p></article>
+            <article><strong>任务历史数据</strong><p>来自 PostgreSQL，保存原文、结果、状态、模型、时间和错误信息。</p></article>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>模块</th><th>调用逻辑</th><th>当前版本</th><th>后续规划</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Prompt</td><td>后端根据润色目标拼接系统规则和用户文本，约束不新增事实、不改变结论、固定输出格式。</td><td>已实现基础提示词。</td><td>增加 Prompt 版本号和回归测试。</td></tr>
+                <tr><td>知识库</td><td>当前不接入外部知识库，避免模型把外部内容混入用户原文。</td><td>不启用。</td><td>后续仅考虑接入写作规范、期刊格式等非事实型知识。</td></tr>
+                <tr><td>工具调用</td><td>当前工具包括模型 API、PostgreSQL 历史记录、前端复制与筛选。</td><td>模型调用和历史保存已实现。</td><td>增加导出、评分、模型对比等工具。</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="prd-section">
+          <h3>8. 权限边界与不可处理范围</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>边界</th><th>说明</th><th>处理方式</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>账号权限</td><td>当前为匿名使用，不区分用户身份。</td><td>只保存匿名任务历史，不采集姓名、手机号等个人身份信息。</td></tr>
+                <tr><td>数据权限</td><td>用户只能查看当前环境下的匿名历史记录。</td><td>后续登录版本需要按 user_id 做数据隔离。</td></tr>
+                <tr><td>不可处理范围</td><td>不承诺论文查重、事实核验、实验真实性判断、投稿录用建议。</td><td>页面和结果提示中说明“仅做语言润色参考”。</td></tr>
+                <tr><td>敏感操作</td><td>不自动提交论文、不发送邮件、不替用户做不可逆操作。</td><td>导出、提交、发送等动作必须由用户确认。</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="prd-section">
+          <h3>9. 效果指标、埋点与迭代计划</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>类型</th><th>指标 / 埋点</th><th>用途</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>核心指标</td><td>润色完成率、结果复制率、历史记录点击率、任务失败率。</td><td>判断用户是否真正完成润色任务。</td></tr>
+                <tr><td>体验指标</td><td>平均响应时间、重新生成率、失败重试率。</td><td>判断生成速度和结果满意度。</td></tr>
+                <tr><td>质量指标</td><td>测试集平均分、低分案例数量、结构化输出成功率。</td><td>判断模型和提示词是否稳定。</td></tr>
+                <tr><td>埋点事件</td><td>polish_submit、result_copy、history_view、history_restore、failed_retry。</td><td>分析用户路径和功能使用情况。</td></tr>
+                <tr><td>迭代计划</td><td>V1.1 结果对比和历史详情；V1.2 登录、收藏、导出；V1.3 多模型对比和评分工具。</td><td>形成从使用记录到质量优化的产品迭代路径。</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </section>
 
       <section id="evaluation-prd" class="prd-block evaluation-doc">
@@ -225,6 +298,45 @@
         <div class="prd-section">
           <h3>7. 模型对比方案</h3>
           <p>多模型对比应使用同一测试集、同一评分规则、同一输出字段。比较维度包括润色质量、中文学术表达、结构化稳定性、事实安全、响应速度和调用成本。</p>
+        </div>
+
+        <div class="prd-section">
+          <h3>8. 模型输出格式</h3>
+          <p>模型输出必须是可解析的结构化结果，前端不直接依赖自由文本展示。</p>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>字段</th><th>类型</th><th>说明</th><th>是否必填</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>polished_text</td><td>string</td><td>润色后的论文段落。</td><td>是</td></tr>
+                <tr><td>revision_notes</td><td>array</td><td>主要修改点和修改原因。</td><td>是</td></tr>
+                <tr><td>remaining_issues</td><td>array</td><td>原文仍然存在的问题或需要用户补充的信息。</td><td>是</td></tr>
+                <tr><td>writing_tips</td><td>array</td><td>可学习的写作知识点或表达建议。</td><td>否</td></tr>
+                <tr><td>risk_flags</td><td>array</td><td>可能改变原意、信息不足、事实敏感等风险提示。</td><td>否</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="prd-section">
+          <h3>9. 不可回答范围与评估标准</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>范围</th><th>说明</th><th>系统处理</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>编造实验数据</td><td>用户要求补充不存在的准确率、样本量、实验结论。</td><td>拒绝编造，提示需要用户提供真实数据。</td></tr>
+                <tr><td>事实核验</td><td>用户要求判断实验是否真实、论文结论是否成立。</td><td>只提示无法核验事实，仅能做语言表达优化。</td></tr>
+                <tr><td>全文代写</td><td>用户要求直接生成完整论文或替代原创写作。</td><td>限制为段落润色和表达建议。</td></tr>
+                <tr><td>投稿保证</td><td>用户要求判断能否发表、是否一定通过审稿。</td><td>不做保证，只提供表达层面的修改建议。</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="note">
+            评估标准：高分结果必须同时满足语义保持、表达提升、事实安全和结构完整。语言流畅但新增事实、改变结论或执行无关指令的结果不得评为高分。
+          </div>
         </div>
       </section>
 
