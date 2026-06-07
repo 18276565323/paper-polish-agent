@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>论文润色 Agent | PRD</title>
+    <meta name="description" content="论文润色 Agent 产品需求文档，包含产品定位、用户画像、竞品对标、功能规划、验收标准和核心指标。" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="./index.html">AI PM Portfolio</a>
+      <nav class="nav" aria-label="PRD 导航">
+        <a href="./index.html">作品集</a>
+        <a href="./prototype.html">原型图</a>
+        <a href="./evaluation.html">评估报告</a>
+        <a href="#scope">版本范围</a>
+        <a href="#requirements">功能需求</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="section evaluation-hero">
+        <p class="eyebrow">PRODUCT REQUIREMENTS</p>
+        <h1>Paper Polish Agent 产品需求文档</h1>
+        <p class="lead">
+          面向学生、研究生和科研新手的 AI 论文润色与评估工具。产品核心不是简单“帮用户改一句话”，而是提供可解释润色、历史追踪、效果评估和后续写作学习反馈。
+        </p>
+      </section>
+
+      <section class="section">
+        <div class="section-heading">
+          <p class="eyebrow">BACKGROUND</p>
+          <h2>1. 产品背景</h2>
+          <p>
+            论文写作用户常见问题包括表达口语化、逻辑不够清晰、AI 修改原因不可解释、历史版本难追踪。通用大模型虽然能润色，但输出结构不稳定，也缺少面向论文场景的质量评估闭环。
+          </p>
+        </div>
+        <div class="cards three">
+          <article class="card">
+            <h3>用户目标</h3>
+            <p>快速把论文段落改得更学术、更清晰，同时理解修改原因。</p>
+          </article>
+          <article class="card">
+            <h3>产品机会</h3>
+            <p>在通用 AI 和传统纠错工具之间，做一个聚焦中文论文段落的结构化润色工具。</p>
+          </article>
+          <article class="card">
+            <h3>设计原则</h3>
+            <p>不新增事实、不改变结论、输出可解释、结果可追踪、效果可评估。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-heading">
+          <p class="eyebrow">USERS</p>
+          <h2>2. 用户画像与场景</h2>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>用户</th>
+                <th>典型场景</th>
+                <th>核心痛点</th>
+                <th>产品机会</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>本科毕业生</td>
+                <td>毕业论文初稿润色</td>
+                <td>表达口语化，不知道如何改成论文语言</td>
+                <td>提供学术化润色和修改解释</td>
+              </tr>
+              <tr>
+                <td>研究生</td>
+                <td>小论文、投稿前语言优化</td>
+                <td>担心 AI 改变实验结论或数值事实</td>
+                <td>强调语义保持和事实约束</td>
+              </tr>
+              <tr>
+                <td>科研新手</td>
+                <td>实验方法、结果分析段落优化</td>
+                <td>逻辑关系不清，术语表达不规范</td>
+                <td>提供逻辑优化、术语保持和问题提示</td>
+              </tr>
+              <tr>
+                <td>非母语写作者</td>
+                <td>中英双语论文表达修正</td>
+                <td>翻译腔明显，学术表达不自然</td>
+                <td>后续支持双语润色和投稿表达</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-heading">
+          <p class="eyebrow">COMPETITIVE ANALYSIS</p>
+          <h2>3. 竞品对标与启发</h2>
+          <p>
+            竞品不是为了照搬功能，而是帮助明确产品边界。Paper Polish Agent 的差异化方向是中文论文段落、可解释润色、历史追踪和质量评估。
+          </p>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>产品</th>
+                <th>核心能力</th>
+                <th>启发</th>
+                <th>本产品取舍</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Paperpal</td>
+                <td>学术写作、语法检查、改写、翻译、AI Review、查重等</td>
+                <td>学术写作工具要覆盖从初稿到投稿的流程</td>
+                <td>先聚焦中文段落润色和解释，不做完整投稿平台</td>
+              </tr>
+              <tr>
+                <td>Grammarly</td>
+                <td>跨平台写作助手、草稿到终稿、重写和清晰度建议</td>
+                <td>写作工具要嵌入真实工作流</td>
+                <td>后续支持 Word/Markdown 导出和历史版本</td>
+              </tr>
+              <tr>
+                <td>QuillBot</td>
+                <td>改写、语法、总结、引用等写作套件</td>
+                <td>改写工具需要多种风格和强度</td>
+                <td>增加轻度/中度/深度润色与风格选择</td>
+              </tr>
+              <tr>
+                <td>秘塔写作猫</td>
+                <td>中文纠错、改写润色、续写、翻译等</td>
+                <td>中文场景需要本土化表达和纠错能力</td>
+                <td>优先优化中文论文表达，不做泛写作工具</td>
+              </tr>
+              <tr>
+                <td>ChatGPT</td>
+                <td>通用对话、自由生成、灵活改写</td>
+                <td>通用模型能力强，但流程和输出不稳定</td>
+                <td>用固定结构、历史记录和评估体系形成产品差异</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="scope" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">VERSION SCOPE</p>
+          <h2>4. 版本规划</h2>
+        </div>
+        <div class="timeline">
+          <div>
+            <strong>V1.0 Demo 验证</strong>
+            <p>论文段落润色、润色需求选择、结构化结果、匿名历史记录、PostgreSQL 存储、评估报告页。</p>
+          </div>
+          <div>
+            <strong>V1.1 体验优化</strong>
+            <p>最小输入长度提示、复制按钮、历史详情对比、润色强度、风格选择、Markdown/Word 导出。</p>
+          </div>
+          <div>
+            <strong>V1.2 AI 产品化</strong>
+            <p>Prompt 版本管理、多模型对比、质量评分、Badcase 反馈、用户登录、免费额度。</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="requirements" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">FEATURE REQUIREMENTS</p>
+          <h2>5. 核心功能需求</h2>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>模块</th>
+                <th>需求描述</th>
+                <th>规则</th>
+                <th>优先级</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>论文润色</td>
+                <td>用户输入论文段落，选择需求后生成结构化润色结果</td>
+                <td>保留原意，不新增事实，返回固定字段</td>
+                <td>P0</td>
+              </tr>
+              <tr>
+                <td>润色参数</td>
+                <td>支持润色需求、润色强度、表达风格选择</td>
+                <td>强度分轻度/中度/深度；风格分学术严谨/简洁凝练/投稿表达</td>
+                <td>P1</td>
+              </tr>
+              <tr>
+                <td>结果展示</td>
+                <td>展示优化后文本、原文、修改明细、剩余问题、AI 知识点</td>
+                <td>支持复制、重新生成、查看解释</td>
+                <td>P0</td>
+              </tr>
+              <tr>
+                <td>历史记录</td>
+                <td>保存每次任务，支持查看和恢复历史结果</td>
+                <td>记录模型、Prompt 版本、状态、时间、结果 JSON</td>
+                <td>P0</td>
+              </tr>
+              <tr>
+                <td>结果对比</td>
+                <td>对比原文和润色后文本，突出主要修改点</td>
+                <td>先做左右对比，后续再做高亮 diff</td>
+                <td>P1</td>
+              </tr>
+              <tr>
+                <td>评估报告</td>
+                <td>基于测试集展示模型表现、低分案例和优化方向</td>
+                <td>支持按场景筛选，自动计算平均分</td>
+                <td>P1</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-heading">
+          <p class="eyebrow">AI REQUIREMENTS</p>
+          <h2>6. AI 相关需求</h2>
+        </div>
+        <div class="cards three">
+          <article class="card">
+            <h3>Prompt 约束</h3>
+            <p>保留原文核心含义，不新增事实，不改变结论，输出固定 JSON 字段，对信息不足文本给出提示。</p>
+          </article>
+          <article class="card">
+            <h3>模型评估</h3>
+            <p>维护测试用例、记录 AI 输出、人工评分、查看平均分和低分 Badcase。</p>
+          </article>
+          <article class="card">
+            <h3>异常兜底</h3>
+            <p>空输入不可提交，短文本提示补充上下文，模型失败记录 failed，JSON 解析失败提示重试。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-heading">
+          <p class="eyebrow">METRICS</p>
+          <h2>7. 核心指标</h2>
+        </div>
+        <div class="feature-grid">
+          <div class="feature">首次润色完成率</div>
+          <div class="feature">结果复制率</div>
+          <div class="feature">历史记录点击率</div>
+          <div class="feature">测试集平均评分</div>
+          <div class="feature">低分 Badcase 占比</div>
+          <div class="feature">模型失败率</div>
+          <div class="feature">平均响应时延</div>
+          <div class="feature">单次调用成本</div>
+          <div class="feature">用户反馈满意度</div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-heading">
+          <p class="eyebrow">REFERENCES</p>
+          <h2>8. 竞品参考来源</h2>
+        </div>
+        <p class="source-list">
+          Paperpal 官方页面、Grammarly AI Writing Assistant 官方页面、QuillBot Help Center、秘塔写作猫公开介绍页。
+        </p>
+      </section>
+    </main>
+
+    <button class="back-top" type="button" aria-label="返回顶部">↑</button>
+    <script src="./script.js"></script>
+  </body>
+</html>
