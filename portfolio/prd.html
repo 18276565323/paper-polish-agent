@@ -16,6 +16,7 @@
       <nav class="nav" aria-label="产品文档导航">
         <a href="./index.html">项目概览</a>
         <a href="./evaluation.html">效果评估</a>
+        <a href="#competition">竞品分析</a>
         <a href="#scope">功能范围</a>
         <a href="#history">历史记录</a>
         <a href="#quality">质量规则</a>
@@ -44,13 +45,14 @@
           <strong>目录</strong>
           <a href="#background">一、背景与目标</a>
           <a href="#users">二、用户与场景</a>
-          <a href="#scope">三、功能范围</a>
-          <a href="#flow">四、主流程</a>
-          <a href="#history">五、历史记录</a>
-          <a href="#quality">六、质量规则</a>
-          <a href="#fallback">七、异常处理</a>
-          <a href="#metrics">八、指标</a>
-          <a href="#acceptance">九、验收标准</a>
+          <a href="#competition">三、竞品分析</a>
+          <a href="#scope">四、功能范围</a>
+          <a href="#flow">五、主流程</a>
+          <a href="#history">六、历史记录</a>
+          <a href="#quality">七、质量规则</a>
+          <a href="#fallback">八、异常处理</a>
+          <a href="#metrics">九、指标</a>
+          <a href="#acceptance">十、验收标准</a>
         </aside>
 
         <div class="doc-content">
@@ -104,8 +106,63 @@
             </div>
           </section>
 
-          <section id="scope" class="doc-section">
+          <section id="competition" class="doc-section">
             <p class="eyebrow">03</p>
+            <h2>竞品分析</h2>
+            <p>
+              竞品分析的目的不是简单罗列功能，而是判断这个工具应该站在哪个位置：不做大而全的写作平台，先做“中文论文段落润色 + 修改解释 + 历史复盘”。
+            </p>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>产品</th>
+                    <th>主要能力</th>
+                    <th>可借鉴点</th>
+                    <th>本项目取舍</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Paperpal</td>
+                    <td>学术写作、语法检查、改写、投稿相关辅助。</td>
+                    <td>场景聚焦学术写作，强调投稿前语言质量。</td>
+                    <td>先聚焦中文段落润色，不扩展到投稿审稿和查重。</td>
+                  </tr>
+                  <tr>
+                    <td>Grammarly</td>
+                    <td>语法纠错、清晰度建议、语气调整、跨平台写作辅助。</td>
+                    <td>写作工具需要嵌入真实写作流程，而不是只给一次结果。</td>
+                    <td>通过历史记录和修改说明增强复盘能力。</td>
+                  </tr>
+                  <tr>
+                    <td>QuillBot</td>
+                    <td>改写、总结、语法检查、引用工具。</td>
+                    <td>改写工具需要提供不同风格和强度选择。</td>
+                    <td>后续增加轻度、标准、深度三档润色强度。</td>
+                  </tr>
+                  <tr>
+                    <td>秘塔写作猫</td>
+                    <td>中文纠错、改写、续写、翻译等综合写作能力。</td>
+                    <td>中文场景需要更自然的本地表达和纠错能力。</td>
+                    <td>保留中文论文语境，避免做成泛写作工具。</td>
+                  </tr>
+                  <tr>
+                    <td>通用对话工具</td>
+                    <td>自由对话、文本生成、解释和改写。</td>
+                    <td>能力强，但输出格式和结果稳定性依赖用户提示。</td>
+                    <td>用固定流程、结构化结果和评分规则降低使用门槛。</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="note">
+              定位结论：第一版不追求覆盖所有写作需求，而是把“论文段落润色”做稳。差异点放在修改解释、历史复盘和质量评估，而不是堆更多生成能力。
+            </div>
+          </section>
+
+          <section id="scope" class="doc-section">
+            <p class="eyebrow">04</p>
             <h2>功能范围</h2>
             <div class="scope-board">
               <div>
@@ -142,7 +199,7 @@
           </section>
 
           <section id="flow" class="doc-section">
-            <p class="eyebrow">04</p>
+            <p class="eyebrow">05</p>
             <h2>主流程</h2>
             <ol class="flow">
               <li>用户输入论文段落，并选择润色目标。</li>
@@ -156,11 +213,25 @@
           </section>
 
           <section id="history" class="doc-section">
-            <p class="eyebrow">05</p>
+            <p class="eyebrow">06</p>
             <h2>历史记录</h2>
             <p>
               历史记录用于解决“结果丢失”和“多次修改难比较”的问题。第一版采用匿名记录，不采集姓名、手机号等身份信息。
             </p>
+            <div class="history-spec">
+              <div>
+                <strong>列表展示</strong>
+                <p>展示最近任务、创建时间、任务状态和原文摘要。用户不用进入单独页面，也能快速找回刚才的结果。</p>
+              </div>
+              <div>
+                <strong>详情恢复</strong>
+                <p>点击历史记录后，恢复原文、润色结果、修改说明和剩余问题，方便继续编辑或复制。</p>
+              </div>
+              <div>
+                <strong>失败复盘</strong>
+                <p>失败任务保留原文和错误类型，便于判断是模型超时、格式异常还是历史加载失败。</p>
+              </div>
+            </div>
             <div class="table-wrap">
               <table>
                 <thead>
@@ -183,7 +254,7 @@
           </section>
 
           <section id="quality" class="doc-section">
-            <p class="eyebrow">06</p>
+            <p class="eyebrow">07</p>
             <h2>质量规则</h2>
             <p>润色结果按 5 个维度评估，用于发现低分案例和改进提示词、输入校验、页面提示。</p>
             <div class="score-rubric">
@@ -196,10 +267,54 @@
             <div class="note">
               低分案例需要记录原因，例如过度扩写、事实改变、术语错误、输出格式异常或输入信息不足。
             </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>测试类型</th>
+                    <th>测试目的</th>
+                    <th>典型问题</th>
+                    <th>优化动作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>口语化表达</td>
+                    <td>验证是否能改成正式学术表达。</td>
+                    <td>只替换词语，句子仍然泛化。</td>
+                    <td>增加学术表达示例和禁用表达。</td>
+                  </tr>
+                  <tr>
+                    <td>数值事实</td>
+                    <td>验证准确率、样本量、响应时间等是否保持。</td>
+                    <td>模型擅自修改或补充数据。</td>
+                    <td>强化“不改数值、不新增实验结论”。</td>
+                  </tr>
+                  <tr>
+                    <td>术语密集</td>
+                    <td>验证技术术语和流程顺序是否保留。</td>
+                    <td>术语被误译，或技术顺序被改错。</td>
+                    <td>对术语增加保留约束。</td>
+                  </tr>
+                  <tr>
+                    <td>短文本</td>
+                    <td>验证信息不足时是否会过度补全。</td>
+                    <td>把短句扩写成不存在的研究结论。</td>
+                    <td>增加最小输入长度提示。</td>
+                  </tr>
+                  <tr>
+                    <td>异常输入</td>
+                    <td>验证非论文文本或按钮报错文本是否能兜底。</td>
+                    <td>强行学术化无关输入。</td>
+                    <td>先识别输入类型，再决定是否润色。</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </section>
 
           <section id="fallback" class="doc-section">
-            <p class="eyebrow">07</p>
+            <p class="eyebrow">08</p>
             <h2>异常处理</h2>
             <div class="table-wrap">
               <table>
@@ -222,7 +337,7 @@
           </section>
 
           <section id="metrics" class="doc-section">
-            <p class="eyebrow">08</p>
+            <p class="eyebrow">09</p>
             <h2>指标</h2>
             <div class="feature-grid">
               <div class="feature">润色完成率</div>
@@ -235,7 +350,7 @@
           </section>
 
           <section id="acceptance" class="doc-section">
-            <p class="eyebrow">09</p>
+            <p class="eyebrow">10</p>
             <h2>验收标准</h2>
             <div class="cards three">
               <article class="card"><h3>能完成主流程</h3><p>用户可以输入、生成、查看结果，并复制润色文本。</p></article>
