@@ -3,364 +3,343 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>学术论文润色工具 PRD</title>
+    <title>学术论文润色工具 | PRD 文档集</title>
     <meta
       name="description"
-      content="学术论文润色工具产品文档，包含产品背景、用户场景、功能范围、历史记录、效果评估、异常兜底和验收标准。"
+      content="学术论文润色工具 PRD 文档集，包含产品总 PRD、模型效果评估 PRD、历史记录与结果复盘功能 PRD。"
     />
     <link rel="stylesheet" href="./styles.css" />
   </head>
-  <body>
+  <body class="prd-page">
     <header class="topbar">
       <a class="brand" href="./index.html">Writing Polish</a>
       <nav class="nav" aria-label="产品文档导航">
         <a href="./index.html">项目概览</a>
+        <a href="#product-prd">产品总 PRD</a>
+        <a href="#evaluation-prd">评估 PRD</a>
+        <a href="#history-prd">历史记录 PRD</a>
         <a href="./evaluation.html">效果评估</a>
-        <a href="#competition">竞品分析</a>
-        <a href="#scope">功能范围</a>
-        <a href="#history">历史记录</a>
-        <a href="#quality">质量规则</a>
-        <a href="#acceptance">验收标准</a>
       </nav>
     </header>
 
-    <main>
-      <section class="prd-cover">
+    <main class="prd-main">
+      <section class="prd-intro">
         <div>
-          <p class="eyebrow">PRODUCT REQUIREMENTS</p>
-          <h1>学术论文润色工具 PRD</h1>
+          <p class="eyebrow">PRODUCT DOCUMENTS</p>
+          <h1>学术论文润色工具 PRD 文档集</h1>
           <p class="lead">
-            本文档记录第一版产品的需求范围和设计口径。产品聚焦论文段落润色，重点解决表达不够正式、修改原因不清楚、历史结果难复盘三个问题。
+            本页不是把三份 PRD 融成一份，而是把三份文档放在同一个界面中展示。三份文档分别对应产品整体设计、模型效果评估、历史记录功能设计。
           </p>
         </div>
-        <div class="prd-meta">
-          <div><span>版本</span><strong>V1.0</strong></div>
-          <div><span>对象</span><strong>学生 / 科研写作者</strong></div>
-          <div><span>范围</span><strong>段落润色</strong></div>
+        <div class="prd-doc-map">
+          <a href="#product-prd"><span>PRD 01</span><strong>产品总 PRD</strong><p>说明产品定位、用户、竞品、功能范围和版本规划。</p></a>
+          <a href="#evaluation-prd"><span>PRD 02</span><strong>模型效果评估 PRD</strong><p>说明能力标签、评分规则、测试集和 Bad Case 归因。</p></a>
+          <a href="#history-prd"><span>PRD 03</span><strong>历史记录功能 PRD</strong><p>说明历史记录、字段、状态、异常和复盘流程。</p></a>
         </div>
       </section>
 
-      <section class="section prd-layout">
-        <aside class="doc-toc" aria-label="目录">
-          <strong>目录</strong>
-          <a href="#background">一、背景与目标</a>
-          <a href="#users">二、用户与场景</a>
-          <a href="#competition">三、竞品分析</a>
-          <a href="#scope">四、功能范围</a>
-          <a href="#flow">五、主流程</a>
-          <a href="#history">六、历史记录</a>
-          <a href="#quality">七、质量规则</a>
-          <a href="#fallback">八、异常处理</a>
-          <a href="#metrics">九、指标</a>
-          <a href="#acceptance">十、验收标准</a>
-        </aside>
+      <section id="product-prd" class="prd-block product-doc">
+        <div class="prd-block-header">
+          <div>
+            <span class="prd-label">PRD 01</span>
+            <h2>产品总 PRD：学术论文润色工具</h2>
+            <p>这部分对应原“产品需求文档”，用于说明产品定位、用户场景、竞品分析、功能范围和核心指标。</p>
+          </div>
+          <dl>
+            <div><dt>版本</dt><dd>V1.0</dd></div>
+            <div><dt>对象</dt><dd>学生 / 科研写作者</dd></div>
+            <div><dt>范围</dt><dd>论文段落润色</dd></div>
+          </dl>
+        </div>
 
-        <div class="doc-content">
-          <section id="background" class="doc-section">
-            <p class="eyebrow">01</p>
-            <h2>背景与目标</h2>
-            <p>
-              论文写作者经常需要把初稿中的口语化、泛化表达调整为更正式的学术语言。通用聊天工具虽然可以润色，但结果不稳定，也不一定说明改动原因。第一版产品目标是把“单次润色”做成一个清晰、可复盘的工具流程。
-            </p>
-            <div class="cards three">
-              <article class="card"><h3>核心目标</h3><p>帮助用户获得更正式、清晰的论文段落表达。</p></article>
-              <article class="card"><h3>边界</h3><p>只处理段落润色，不承诺论文查重、投稿建议和全文审稿。</p></article>
-              <article class="card"><h3>判断标准</h3><p>润色后不改变原意，不新增事实，能说明主要修改点。</p></article>
-            </div>
-          </section>
+        <div class="prd-section">
+          <h3>1. 产品背景</h3>
+          <p>
+            论文写作者经常需要把初稿中的口语化、泛化表达调整为更正式的学术语言。通用聊天工具虽然可以润色，但结果不稳定，也不一定说明改动原因。第一版产品目标是把“单次润色”做成一个清晰、可复盘的工具流程。
+          </p>
+          <div class="prd-cards three">
+            <article><strong>用户目标</strong><p>快速获得更正式、清晰的论文段落表达。</p></article>
+            <article><strong>产品机会</strong><p>在通用聊天工具和完整写作平台之间，做一个聚焦段落润色的轻量工具。</p></article>
+            <article><strong>设计原则</strong><p>不新增事实、不改变结论、输出可解释、结果可追踪。</p></article>
+          </div>
+        </div>
 
-          <section id="users" class="doc-section">
-            <p class="eyebrow">02</p>
-            <h2>用户与场景</h2>
-            <div class="table-wrap">
-              <table>
-                <thead>
-                  <tr>
-                    <th>用户</th>
-                    <th>场景</th>
-                    <th>痛点</th>
-                    <th>产品响应</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>本科毕业生</td>
-                    <td>毕业论文初稿修改</td>
-                    <td>表达偏口语，不知道怎么改成论文语言。</td>
-                    <td>提供学术化润色和修改说明。</td>
-                  </tr>
-                  <tr>
-                    <td>研究生</td>
-                    <td>实验结果段落优化</td>
-                    <td>担心数值、结论或技术术语被改错。</td>
-                    <td>强调事实保持，并提示潜在风险。</td>
-                  </tr>
-                  <tr>
-                    <td>科研写作新手</td>
-                    <td>方法、结果、讨论段落修改</td>
-                    <td>不知道问题出在逻辑、表达还是信息不足。</td>
-                    <td>输出剩余问题和写作建议。</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </section>
+        <div class="prd-section">
+          <h3>2. 用户画像与场景</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>用户</th><th>典型场景</th><th>核心痛点</th><th>产品响应</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>本科毕业生</td><td>毕业论文初稿润色</td><td>表达偏口语，不知道如何改成论文语言。</td><td>提供学术化润色和修改说明。</td></tr>
+                <tr><td>研究生</td><td>小论文、投稿前语言优化</td><td>担心实验结论、数值或术语被改错。</td><td>强调语义保持和事实约束。</td></tr>
+                <tr><td>科研写作新手</td><td>方法、结果、讨论段落优化</td><td>不知道问题出在逻辑、表达还是信息不足。</td><td>输出剩余问题和写作建议。</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
 
-          <section id="competition" class="doc-section">
-            <p class="eyebrow">03</p>
-            <h2>竞品分析</h2>
-            <p>
-              竞品分析的目的不是简单罗列功能，而是判断这个工具应该站在哪个位置：不做大而全的写作平台，先做“中文论文段落润色 + 修改解释 + 历史复盘”。
-            </p>
-            <div class="table-wrap">
-              <table>
-                <thead>
-                  <tr>
-                    <th>产品</th>
-                    <th>主要能力</th>
-                    <th>可借鉴点</th>
-                    <th>本项目取舍</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Paperpal</td>
-                    <td>学术写作、语法检查、改写、投稿相关辅助。</td>
-                    <td>场景聚焦学术写作，强调投稿前语言质量。</td>
-                    <td>先聚焦中文段落润色，不扩展到投稿审稿和查重。</td>
-                  </tr>
-                  <tr>
-                    <td>Grammarly</td>
-                    <td>语法纠错、清晰度建议、语气调整、跨平台写作辅助。</td>
-                    <td>写作工具需要嵌入真实写作流程，而不是只给一次结果。</td>
-                    <td>通过历史记录和修改说明增强复盘能力。</td>
-                  </tr>
-                  <tr>
-                    <td>QuillBot</td>
-                    <td>改写、总结、语法检查、引用工具。</td>
-                    <td>改写工具需要提供不同风格和强度选择。</td>
-                    <td>后续增加轻度、标准、深度三档润色强度。</td>
-                  </tr>
-                  <tr>
-                    <td>秘塔写作猫</td>
-                    <td>中文纠错、改写、续写、翻译等综合写作能力。</td>
-                    <td>中文场景需要更自然的本地表达和纠错能力。</td>
-                    <td>保留中文论文语境，避免做成泛写作工具。</td>
-                  </tr>
-                  <tr>
-                    <td>通用对话工具</td>
-                    <td>自由对话、文本生成、解释和改写。</td>
-                    <td>能力强，但输出格式和结果稳定性依赖用户提示。</td>
-                    <td>用固定流程、结构化结果和评分规则降低使用门槛。</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="note">
-              定位结论：第一版不追求覆盖所有写作需求，而是把“论文段落润色”做稳。差异点放在修改解释、历史复盘和质量评估，而不是堆更多生成能力。
-            </div>
-          </section>
+        <div class="prd-section">
+          <h3>3. 竞品对标与启发</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>产品</th><th>主要能力</th><th>启发</th><th>本项目取舍</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Paperpal</td><td>学术写作、语法检查、改写、投稿相关辅助。</td><td>学术写作工具需要围绕论文场景做深。</td><td>先聚焦中文段落润色，不扩展到投稿审稿和查重。</td></tr>
+                <tr><td>Grammarly</td><td>语法纠错、清晰度建议、语气调整、跨平台写作辅助。</td><td>写作工具需要嵌入用户真实工作流。</td><td>通过历史记录和修改说明增强复盘能力。</td></tr>
+                <tr><td>QuillBot</td><td>改写、总结、语法检查、引用工具。</td><td>改写工具需要提供不同风格和强度。</td><td>后续增加轻度、标准、深度三档润色强度。</td></tr>
+                <tr><td>秘塔写作猫</td><td>中文纠错、改写、续写、翻译等综合写作能力。</td><td>中文场景需要本地化表达和纠错能力。</td><td>保留中文论文语境，避免做成泛写作工具。</td></tr>
+                <tr><td>通用对话工具</td><td>自由对话、文本生成、解释和改写。</td><td>能力强，但输出格式和结果稳定性依赖用户提示。</td><td>用固定流程、结构化结果和评分规则降低使用门槛。</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
 
-          <section id="scope" class="doc-section">
-            <p class="eyebrow">04</p>
-            <h2>功能范围</h2>
-            <div class="scope-board">
-              <div>
-                <strong>P0 必须实现</strong>
-                <ul>
-                  <li>论文段落输入</li>
-                  <li>润色目标选择</li>
-                  <li>润色结果展示</li>
-                  <li>修改说明展示</li>
-                  <li>匿名历史记录</li>
-                </ul>
-              </div>
-              <div>
-                <strong>P1 优先优化</strong>
-                <ul>
-                  <li>结果对比</li>
-                  <li>历史详情</li>
-                  <li>失败任务重试</li>
-                  <li>用户反馈</li>
-                  <li>测试集评分</li>
-                </ul>
-              </div>
-              <div>
-                <strong>P2 后续规划</strong>
-                <ul>
-                  <li>账号体系</li>
-                  <li>收藏与导出</li>
-                  <li>多模型对比</li>
-                  <li>Prompt 版本管理</li>
-                  <li>额度和成本统计</li>
-                </ul>
-              </div>
-            </div>
-          </section>
+        <div class="prd-section">
+          <h3>4. 版本规划</h3>
+          <div class="prd-timeline">
+            <div><strong>V1.0 Demo 验证</strong><p>论文段落润色、结构化结果、匿名历史记录、基础评估报告。</p></div>
+            <div><strong>V1.1 体验优化</strong><p>结果对比、历史详情、复制、重试、输入长度提示、Markdown / Word 导出。</p></div>
+            <div><strong>V1.2 产品化</strong><p>Prompt 版本管理、多模型对比、用户登录、免费额度、反馈入口。</p></div>
+          </div>
+        </div>
 
-          <section id="flow" class="doc-section">
-            <p class="eyebrow">05</p>
-            <h2>主流程</h2>
-            <ol class="flow">
-              <li>用户输入论文段落，并选择润色目标。</li>
-              <li>系统检查输入是否为空、是否过短。</li>
-              <li>后端创建任务记录，状态为 running。</li>
-              <li>调用模型生成润色结果和修改说明。</li>
-              <li>系统校验结果字段是否完整。</li>
-              <li>任务成功后保存结果，失败则保留错误原因。</li>
-              <li>前端展示润色结果，并刷新历史记录。</li>
-            </ol>
-          </section>
+        <div class="prd-section">
+          <h3>5. 核心功能需求</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>模块</th><th>需求描述</th><th>规则</th><th>优先级</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>论文润色</td><td>用户输入论文段落后生成润色结果。</td><td>保留原意，不新增事实，返回固定字段。</td><td>P0</td></tr>
+                <tr><td>润色参数</td><td>支持目标、强度、风格选择。</td><td>先提供有限选项，避免用户配置过重。</td><td>P1</td></tr>
+                <tr><td>结果展示</td><td>展示润色文本、修改说明、剩余问题、知识点。</td><td>支持复制和重新生成。</td><td>P0</td></tr>
+                <tr><td>历史记录</td><td>保存每次任务，支持查看和恢复。</td><td>记录状态、时间、模型和结果。</td><td>P0</td></tr>
+                <tr><td>效果评估</td><td>基于测试集展示评分和问题备注。</td><td>支持按场景筛选。</td><td>P1</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
 
-          <section id="history" class="doc-section">
-            <p class="eyebrow">06</p>
-            <h2>历史记录</h2>
-            <p>
-              历史记录用于解决“结果丢失”和“多次修改难比较”的问题。第一版采用匿名记录，不采集姓名、手机号等身份信息。
-            </p>
-            <div class="history-spec">
-              <div>
-                <strong>列表展示</strong>
-                <p>展示最近任务、创建时间、任务状态和原文摘要。用户不用进入单独页面，也能快速找回刚才的结果。</p>
-              </div>
-              <div>
-                <strong>详情恢复</strong>
-                <p>点击历史记录后，恢复原文、润色结果、修改说明和剩余问题，方便继续编辑或复制。</p>
-              </div>
-              <div>
-                <strong>失败复盘</strong>
-                <p>失败任务保留原文和错误类型，便于判断是模型超时、格式异常还是历史加载失败。</p>
-              </div>
-            </div>
-            <div class="table-wrap">
-              <table>
-                <thead>
-                  <tr>
-                    <th>字段</th>
-                    <th>说明</th>
-                    <th>用途</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr><td>task_id</td><td>任务编号</td><td>用于查询和问题定位。</td></tr>
-                  <tr><td>input_text</td><td>用户原文</td><td>用于恢复输入和对比结果。</td></tr>
-                  <tr><td>result_json</td><td>结构化结果</td><td>保存润色文本、修改说明和问题提示。</td></tr>
-                  <tr><td>status</td><td>running / success / failed</td><td>用于展示任务状态和失败兜底。</td></tr>
-                  <tr><td>model_name</td><td>模型名称</td><td>用于后续效果分析。</td></tr>
-                  <tr><td>created_at</td><td>创建时间</td><td>用于历史列表排序。</td></tr>
-                </tbody>
-              </table>
-            </div>
-          </section>
+      <section id="evaluation-prd" class="prd-block evaluation-doc">
+        <div class="prd-block-header">
+          <div>
+            <span class="prd-label">PRD 02</span>
+            <h2>模型效果评估 PRD</h2>
+            <p>这部分对应原“模型评测框架设计 PRD”，用于说明怎样判断润色效果是否可靠，而不是只看语言是否流畅。</p>
+          </div>
+          <dl>
+            <div><dt>测试集</dt><dd>15 条</dd></div>
+            <div><dt>评分</dt><dd>5 维度</dd></div>
+            <div><dt>用途</dt><dd>发现问题</dd></div>
+          </dl>
+        </div>
 
-          <section id="quality" class="doc-section">
-            <p class="eyebrow">07</p>
-            <h2>质量规则</h2>
-            <p>润色结果按 5 个维度评估，用于发现低分案例和改进提示词、输入校验、页面提示。</p>
-            <div class="score-rubric">
-              <div><strong>30%</strong><span>语义保持：不改变原文意思、结论和限定条件。</span></div>
-              <div><strong>30%</strong><span>学术表达：表达正式、客观、凝练。</span></div>
-              <div><strong>20%</strong><span>可读性：句子更清楚，逻辑更顺。</span></div>
-              <div><strong>10%</strong><span>结构完整：结果字段完整，可被页面展示。</span></div>
-              <div><strong>10%</strong><span>风险控制：不新增事实，不改数值，不执行无关指令。</span></div>
-            </div>
-            <div class="note">
-              低分案例需要记录原因，例如过度扩写、事实改变、术语错误、输出格式异常或输入信息不足。
-            </div>
-            <div class="table-wrap">
-              <table>
-                <thead>
-                  <tr>
-                    <th>测试类型</th>
-                    <th>测试目的</th>
-                    <th>典型问题</th>
-                    <th>优化动作</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>口语化表达</td>
-                    <td>验证是否能改成正式学术表达。</td>
-                    <td>只替换词语，句子仍然泛化。</td>
-                    <td>增加学术表达示例和禁用表达。</td>
-                  </tr>
-                  <tr>
-                    <td>数值事实</td>
-                    <td>验证准确率、样本量、响应时间等是否保持。</td>
-                    <td>模型擅自修改或补充数据。</td>
-                    <td>强化“不改数值、不新增实验结论”。</td>
-                  </tr>
-                  <tr>
-                    <td>术语密集</td>
-                    <td>验证技术术语和流程顺序是否保留。</td>
-                    <td>术语被误译，或技术顺序被改错。</td>
-                    <td>对术语增加保留约束。</td>
-                  </tr>
-                  <tr>
-                    <td>短文本</td>
-                    <td>验证信息不足时是否会过度补全。</td>
-                    <td>把短句扩写成不存在的研究结论。</td>
-                    <td>增加最小输入长度提示。</td>
-                  </tr>
-                  <tr>
-                    <td>异常输入</td>
-                    <td>验证非论文文本或按钮报错文本是否能兜底。</td>
-                    <td>强行学术化无关输入。</td>
-                    <td>先识别输入类型，再决定是否润色。</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </section>
+        <div class="prd-section">
+          <h3>1. 任务和能力标签</h3>
+          <div class="tag-matrix">
+            <span>学术化表达</span>
+            <span>语义保持</span>
+            <span>事实与数值保持</span>
+            <span>术语保持</span>
+            <span>结构化输出</span>
+            <span>异常兜底</span>
+            <span>Prompt 注入防护</span>
+            <span>可解释性</span>
+          </div>
+        </div>
 
-          <section id="fallback" class="doc-section">
-            <p class="eyebrow">08</p>
-            <h2>异常处理</h2>
-            <div class="table-wrap">
-              <table>
-                <thead>
-                  <tr>
-                    <th>场景</th>
-                    <th>处理方式</th>
-                    <th>提示文案</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr><td>输入为空</td><td>不提交任务</td><td>请先输入需要润色的论文段落。</td></tr>
-                  <tr><td>文本过短</td><td>允许继续，但提示风险</td><td>当前文本较短，建议补充上下文。</td></tr>
-                  <tr><td>模型失败</td><td>记录 failed 状态</td><td>服务暂时不可用，请稍后重试。</td></tr>
-                  <tr><td>结果格式异常</td><td>保留原文，提示重试</td><td>结果格式异常，请重新生成。</td></tr>
-                  <tr><td>历史加载失败</td><td>不影响主流程</td><td>历史记录暂时无法加载。</td></tr>
-                </tbody>
-              </table>
-            </div>
-          </section>
+        <div class="prd-section">
+          <h3>2. 整体评测架构</h3>
+          <ol class="flow">
+            <li>维护标准测试集，给每条用例标注能力标签和观察点。</li>
+            <li>使用同一套提示词和模型配置运行测试用例。</li>
+            <li>按语义保持、学术表达、可读性、结构完整和风险控制评分。</li>
+            <li>将低分用例归入 Bad Case，判断问题来自输入、提示词、模型或产品交互。</li>
+            <li>根据归因结果调整提示词、输入校验、页面提示和模型选型。</li>
+          </ol>
+        </div>
 
-          <section id="metrics" class="doc-section">
-            <p class="eyebrow">09</p>
-            <h2>指标</h2>
-            <div class="feature-grid">
-              <div class="feature">润色完成率</div>
-              <div class="feature">结果复制率</div>
-              <div class="feature">历史记录点击率</div>
-              <div class="feature">任务失败率</div>
-              <div class="feature">平均响应时间</div>
-              <div class="feature">低分案例数量</div>
-            </div>
-          </section>
+        <div class="prd-section">
+          <h3>3. 过程动作得分点设计</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>评分项</th><th>满分</th><th>得分规则</th><th>扣分示例</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>输入理解</td><td>10</td><td>识别主题、方法、结论、指标和术语。</td><td>把训练时间增加误判为效率提升。</td></tr>
+                <tr><td>任务遵循</td><td>10</td><td>只执行润色任务，不执行无关指令。</td><td>用户输入注入指令后按注入内容输出。</td></tr>
+                <tr><td>改写动作</td><td>10</td><td>完成学术化、凝练化和逻辑优化。</td><td>短文本被扩写成完整研究结论。</td></tr>
+                <tr><td>结构化返回</td><td>10</td><td>字段完整，前端可稳定展示。</td><td>缺少修改说明或输出纯文本。</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
 
-          <section id="acceptance" class="doc-section">
-            <p class="eyebrow">10</p>
-            <h2>验收标准</h2>
-            <div class="cards three">
-              <article class="card"><h3>能完成主流程</h3><p>用户可以输入、生成、查看结果，并复制润色文本。</p></article>
-              <article class="card"><h3>能解释修改</h3><p>结果不仅有润色文本，还包含主要修改说明和剩余问题。</p></article>
-              <article class="card"><h3>能保存历史</h3><p>每次任务都能保存状态、原文、结果和创建时间。</p></article>
-              <article class="card"><h3>能处理失败</h3><p>输入异常、模型失败和历史加载失败都有明确提示。</p></article>
-              <article class="card"><h3>能支持评估</h3><p>测试用例可以按统一评分规则记录结果和问题。</p></article>
-              <article class="card"><h3>不暴露密钥</h3><p>模型密钥只保存在后端环境变量，不进入前端页面和代码仓库。</p></article>
-            </div>
-          </section>
+        <div class="prd-section">
+          <h3>4. 完成质量分设计</h3>
+          <div class="score-rubric">
+            <div><strong>30%</strong><span>语义保持：不改变原文含义、结论和限定条件。</span></div>
+            <div><strong>30%</strong><span>学术表达：表达正式、客观、凝练，符合论文语境。</span></div>
+            <div><strong>20%</strong><span>可读性：句子更清楚，逻辑更顺。</span></div>
+            <div><strong>10%</strong><span>结构完整：结果字段完整，可被页面展示。</span></div>
+            <div><strong>10%</strong><span>风险控制：不新增事实，不改数值，不执行无关指令。</span></div>
+          </div>
+        </div>
+
+        <div class="prd-section">
+          <h3>5. 评测任务集设计</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>测试类型</th><th>设计目的</th><th>观察指标</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>口语化表达</td><td>验证能否改为正式论文表达。</td><td>是否减少口语化、保留原意。</td></tr>
+                <tr><td>数值事实</td><td>验证准确率、样本量、响应时间等是否保持。</td><td>数值是否被修改，单位是否出错。</td></tr>
+                <tr><td>术语密集</td><td>验证术语保持和流程理解能力。</td><td>术语是否保留，技术顺序是否正确。</td></tr>
+                <tr><td>短文本</td><td>验证信息不足时是否过度补全。</td><td>是否提示补充上下文，是否新增事实。</td></tr>
+                <tr><td>异常输入</td><td>验证非论文文本或按钮报错文本的兜底能力。</td><td>是否强行学术化无关输入。</td></tr>
+                <tr><td>Prompt 注入</td><td>验证任务边界和安全性。</td><td>是否拒绝无关指令并继续按润色任务处理。</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="prd-section">
+          <h3>6. Bad Case 归因规则</h3>
+          <div class="prd-cards four">
+            <article><strong>输入问题</strong><p>文本过短、上下文不足、不是论文内容。</p></article>
+            <article><strong>提示词问题</strong><p>过度扩写、拔高贡献、没有限制事实新增。</p></article>
+            <article><strong>模型能力问题</strong><p>术语理解差、结构化输出不稳定。</p></article>
+            <article><strong>产品交互问题</strong><p>用户不知道该输入什么，无法理解低分原因。</p></article>
+          </div>
+        </div>
+
+        <div class="prd-section">
+          <h3>7. 模型对比方案</h3>
+          <p>多模型对比应使用同一测试集、同一评分规则、同一输出字段。比较维度包括润色质量、中文学术表达、结构化稳定性、事实安全、响应速度和调用成本。</p>
+        </div>
+      </section>
+
+      <section id="history-prd" class="prd-block history-doc">
+        <div class="prd-block-header">
+          <div>
+            <span class="prd-label">PRD 03</span>
+            <h2>历史记录与结果复盘功能 PRD</h2>
+            <p>这部分对应原“历史记录与结果复盘功能 PRD”，用于说明历史记录为什么不是附属列表，而是后续质量复盘和数据沉淀的入口。</p>
+          </div>
+          <dl>
+            <div><dt>阶段</dt><dd>匿名记录</dd></div>
+            <div><dt>状态</dt><dd>running / success / failed</dd></div>
+            <div><dt>目标</dt><dd>可恢复</dd></div>
+          </dl>
+        </div>
+
+        <div class="prd-section">
+          <h3>1. 功能背景</h3>
+          <p>
+            用户润色论文时通常会多次输入、比较结果和复制片段。如果没有历史记录，刷新页面后结果会丢失。对产品侧来说，没有历史数据也无法复盘模型效果、定位低分案例或评估提示词版本。
+          </p>
+          <div class="prd-cards three">
+            <article><strong>用户价值</strong><p>找回历史润色结果，降低重复操作成本。</p></article>
+            <article><strong>产品价值</strong><p>沉淀输入、输出、状态和错误信息，用于后续质量分析。</p></article>
+            <article><strong>技术价值</strong><p>建立任务状态表，为账号、额度和数据隔离打基础。</p></article>
+          </div>
+        </div>
+
+        <div class="prd-section">
+          <h3>2. 页面入口与信息架构</h3>
+          <div class="history-spec">
+            <div><strong>右侧最近任务</strong><p>主工作台展示最近 10 条任务，包含状态、时间和原文摘要。</p></div>
+            <div><strong>任务详情恢复</strong><p>点击历史记录后，恢复原文、润色结果、修改说明和剩余问题。</p></div>
+            <div><strong>失败任务复盘</strong><p>失败任务展示错误状态和重试入口，不覆盖用户原始输入。</p></div>
+          </div>
+        </div>
+
+        <div class="prd-section">
+          <h3>3. 字段设计</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>字段</th><th>说明</th><th>用途</th><th>优先级</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>task_id</td><td>任务唯一编号。</td><td>查询和问题定位。</td><td>P0</td></tr>
+                <tr><td>input_text</td><td>用户输入的原始论文段落。</td><td>恢复输入和结果对比。</td><td>P0</td></tr>
+                <tr><td>result_json</td><td>润色结果、修改说明、剩余问题等结构化数据。</td><td>前端展示和后续评估。</td><td>P0</td></tr>
+                <tr><td>status</td><td>running、success、failed。</td><td>展示任务状态和失败兜底。</td><td>P0</td></tr>
+                <tr><td>model_name</td><td>实际调用的模型。</td><td>效果复盘和成本分析。</td><td>P0</td></tr>
+                <tr><td>prompt_version</td><td>提示词版本。</td><td>A/B 测试和回归评测。</td><td>P1</td></tr>
+                <tr><td>score</td><td>人工或自动评估分数。</td><td>低分案例分析。</td><td>P1</td></tr>
+                <tr><td>created_at</td><td>任务创建时间。</td><td>历史列表排序。</td><td>P0</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="prd-section">
+          <h3>4. 核心交互流程</h3>
+          <div class="prd-cards three">
+            <article><strong>新建润色任务</strong><p>提交原文后创建 running 任务，模型返回后更新为 success 或 failed。</p></article>
+            <article><strong>查看历史任务</strong><p>点击任务卡片，根据 task_id 获取详情并恢复结果。</p></article>
+            <article><strong>复盘低分结果</strong><p>为低分任务添加问题说明，将其沉淀为回归测试用例。</p></article>
+          </div>
+        </div>
+
+        <div class="prd-section">
+          <h3>5. 状态流转</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>状态</th><th>触发条件</th><th>页面展示</th><th>后续动作</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>running</td><td>用户提交任务，后端已创建记录。</td><td>显示生成中。</td><td>等待模型返回或超时。</td></tr>
+                <tr><td>success</td><td>模型返回并成功解析结构化结果。</td><td>展示润色结果和历史卡片。</td><td>允许复制、查看详情、加入评估。</td></tr>
+                <tr><td>failed</td><td>模型失败、超时、解析失败或数据库写入失败。</td><td>展示失败提示，保留原文。</td><td>允许重试，记录错误类型。</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="prd-section">
+          <h3>6. 异常与兜底</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>异常场景</th><th>用户提示</th><th>系统处理</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>输入为空</td><td>请先输入需要润色的论文段落。</td><td>不创建任务，不调用模型。</td></tr>
+                <tr><td>输入过短</td><td>当前文本较短，建议补充上下文。</td><td>允许继续，但提示信息不足风险。</td></tr>
+                <tr><td>模型调用失败</td><td>模型服务暂时不可用，请稍后重试。</td><td>任务记为 failed，保存错误类型。</td></tr>
+                <tr><td>结构化解析失败</td><td>结果格式异常，请重新生成。</td><td>保留原始输出用于排查。</td></tr>
+                <tr><td>历史记录加载失败</td><td>历史记录暂时无法加载，不影响继续润色。</td><td>主流程可继续，记录接口错误。</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="prd-section">
+          <h3>7. 指标与后续迭代</h3>
+          <div class="feature-grid">
+            <div class="feature">历史记录点击率</div>
+            <div class="feature">历史任务恢复率</div>
+            <div class="feature">结果复制率</div>
+            <div class="feature">失败任务重试率</div>
+            <div class="feature">任务成功率</div>
+            <div class="feature">低分案例标记率</div>
+          </div>
+          <div class="note">
+            后续迭代：V1.1 支持历史详情和筛选，V1.2 支持登录与数据迁移，V1.3 将历史任务接入多模型对比和回归测试。
+          </div>
         </div>
       </section>
     </main>
