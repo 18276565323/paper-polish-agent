@@ -1487,18 +1487,7 @@ td:first-child {
   align-items: stretch;
   border-bottom: 1px solid var(--border);
   padding: 26px;
-}
-
-.product-doc .prd-block-header {
-  background: linear-gradient(90deg, #ffffff 0%, #ffffff 66%, #edf4f2 66%, #edf4f2 100%);
-}
-
-.evaluation-doc .prd-block-header {
-  background: linear-gradient(90deg, #ffffff 0%, #ffffff 66%, #fff7e6 66%, #fff7e6 100%);
-}
-
-.history-doc .prd-block-header {
-  background: linear-gradient(90deg, #ffffff 0%, #ffffff 66%, #eef2ff 66%, #eef2ff 100%);
+  background: #fff;
 }
 
 .prd-block-header h2 {
@@ -1526,6 +1515,21 @@ td:first-child {
   border-radius: 8px;
   padding: 14px;
   background: rgba(255, 255, 255, 0.72);
+}
+
+.product-doc .prd-block-header dl div {
+  background: #edf4f2;
+  border-color: #cfe3dd;
+}
+
+.evaluation-doc .prd-block-header dl div {
+  background: #fff7e6;
+  border-color: #f0d8a8;
+}
+
+.history-doc .prd-block-header dl div {
+  background: #f1f4ff;
+  border-color: #d8def7;
 }
 
 .prd-block-header dt {
