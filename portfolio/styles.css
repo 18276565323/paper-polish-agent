@@ -1014,17 +1014,28 @@ td:first-child {
 
 /* Revised portfolio pages */
 .case-hero {
-  min-height: 620px;
+  min-height: auto;
   display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(360px, 1.1fr);
+  grid-template-columns: minmax(430px, 0.88fr) minmax(560px, 1.12fr);
   gap: 34px;
   align-items: center;
-  padding: 58px 0 38px;
+  padding: 42px 0 30px;
 }
 
 .case-hero-copy {
   display: grid;
   gap: 18px;
+}
+
+.case-hero h1 {
+  max-width: 720px;
+  font-size: clamp(42px, 4.5vw, 64px);
+}
+
+.case-hero .lead {
+  max-width: 720px;
+  font-size: 19px;
+  line-height: 1.7;
 }
 
 .workspace-preview {
