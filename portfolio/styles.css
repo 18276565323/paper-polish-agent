@@ -1660,6 +1660,30 @@ td:first-child {
   font-size: 18px;
 }
 
+@media (max-width: 1180px) {
+  .case-hero {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    padding: 42px 0 26px;
+  }
+
+  .workspace-preview {
+    max-width: 100%;
+  }
+
+  .workflow-lane {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .workflow-lane div {
+    min-height: 0;
+  }
+
+  .delivery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 980px) {
   .workspace-layout,
   .history-layout,
